@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { projectType } from './Projects';
+import { projectType } from './ProjectsPage';
 
 export interface projectsSliceState {
   projects: projectType[];
