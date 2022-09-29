@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { RouterProvider as Router } from 'react-router-dom'
-import reportWebVitals from './reportWebVitals';
-import { createBrowserRouter } from "react-router-dom";
-import App from "./App";
-import Projects from "./components/pages/Projects/Projects";
+import { RouterProvider as Router, createBrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux';
+import reportWebVitals from './reportWebVitals';
+import App from "./App";
+import Projects from "./components/pages/Projects/ProjectsPage";
 import store from './state/store';
+import ProjectPage from './components/pages/Projects/ProjectPage';
 
 export const router = createBrowserRouter([
   {
@@ -21,7 +21,12 @@ export const router = createBrowserRouter([
   {
     path: '/projects',
     element: <Projects />,
+  },
+  {
+    path: '/projects/:projectId',
+    element: <ProjectPage />
   }
+
 ]);
 
 const root = ReactDOM.createRoot(
