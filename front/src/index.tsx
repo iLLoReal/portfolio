@@ -4,9 +4,9 @@ import './index.css';
 import { RouterProvider as Router, createBrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import reportWebVitals from './reportWebVitals';
-import App from "./App";
-import Projects from "./components/pages/Projects/ProjectsPage";
 import store from './state/store';
+import App from "./App";
+import ProjectsPage from "./components/pages/Projects/ProjectsPage";
 import ProjectPage from './components/pages/Projects/ProjectPage';
 
 export const router = createBrowserRouter([
@@ -20,10 +20,10 @@ export const router = createBrowserRouter([
   },
   {
     path: '/projects',
-    element: <Projects />,
+    element: <ProjectsPage />,
   },
   {
-    path: '/projects/:projectId',
+    path: '/projects/:projectTitle',
     element: <ProjectPage />
   }
 
