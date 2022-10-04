@@ -10,11 +10,13 @@ const initialState: projectsSliceState = {
   projects: [{
     id: 0,
     title: 'Portfolio',
-    stack: ['React', 'TypeScript']
+    stack: ['React', 'TypeScript'],
+    previewUrl: 'https://img.freepik.com/free-psd/phone-14-pro-front-view_187299-22711.jpg?w=826&t=st=1664891574~exp=1664892174~hmac=8a76ae7fad69dcdfe7f2853dc822ecc162b8d2bcf108a6043a95365039565096'
   },{
     id: 1,
     title: 'RFP',
-    stack: ['React', 'TypeScript', 'Strapi', 'Tauri']
+    stack: ['React', 'TypeScript', 'Strapi', 'Tauri'],
+    previewUrl: 'https://img.freepik.com/free-psd/phone-14-pro-front-view_187299-22711.jpg?w=826&t=st=1664891574~exp=1664892174~hmac=8a76ae7fad69dcdfe7f2853dc822ecc162b8d2bcf108a6043a95365039565096'
   }],
   status: 'idle'
 }

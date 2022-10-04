@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useAppSelector } from '../../../state/hooks';
 import { projectType } from './ProjectsPage';
 
-const defaultProject: projectType = { id: -1, title: 'none', stack: ['none'] };
+const defaultProject: projectType = { id: -1, title: 'none', stack: ['none'], previewUrl: 'https://img.freepik.com/free-psd/phone-14-pro-front-view_187299-22711.jpg?w=826&t=st=1664891574~exp=1664892174~hmac=8a76ae7fad69dcdfe7f2853dc822ecc162b8d2bcf108a6043a95365039565096' };
 
 /**
  * Composant qui prend une page, représentant un projet en fonction de son titre
