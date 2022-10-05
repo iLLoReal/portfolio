@@ -1,5 +1,5 @@
 import { CardHeader, CardMedia, useMediaQuery } from '@mui/material';
-import { projectType } from '../pages/Projects/ProjectsPage';
+import { projectType } from '../pages/Projects/ProjectsPage/ProjectsPage';
 import './ProjectPreview.scss';
 
 type Props = {

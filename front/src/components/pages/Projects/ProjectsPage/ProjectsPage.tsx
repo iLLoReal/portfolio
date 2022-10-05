@@ -2,14 +2,15 @@ import PreviewIcon from '@mui/icons-material/Preview';
 import { CardHeader, Grid, useMediaQuery } from '@mui/material';
 import { Container } from '@mui/system';
 import Axios from 'axios';
-import { useEffect, useState } from 'react';
-import { useAppSelector } from '../../../../state/hooks';
-import Drawer from '../../../utils/Drawer';
+import { useEffect, useMemo, useState } from 'react';
+import { BrowserView } from 'react-device-detect';
+import { useAppDispatch, useAppSelector } from '../../../../state/hooks';
 import ProjectCard from '../../../Project/ProjectCard';
 import ProjectPreview from '../../../Project/ProjectPreview';
 import Footer from '../../../Template/Footer';
 import Header from '../../../Template/Header';
-import { BrowserView } from 'react-device-detect';
+import Drawer from '../../../utils/Drawer';
+import { loadProjects, notFound } from '../projectsSlice';
 import * as routes from '../../../../routes';
 
 export type projectType = {
@@ -19,16 +20,23 @@ export type projectType = {
   previewUrl: string;
 }
 
+
 const ProjectsPage = () => {
   const projectStore = useAppSelector((state) => state.projectStore)
+  const dispatch = useAppDispatch();
   const notOnMobile = useMediaQuery('(min-width:400px)');
-  const [projectList, setProjectList] = useState<projectType[]>([]);
-  const [focusedProject, setFocusedProject] = useState<projectType | null>(null);
+  const projectList = useMemo<projectType[]>(() => {
+    return projectStore.projects;
+  }, [projectStore.projects]);
+  const [focusedProject, setFocusedProject] = useState<projectType>(projectList[0] || notFound);
 
   useEffect(() => {
-    setProjectList(projectStore.projects);
     setFocusedProject(projectStore.projects[0]);
-  }, [projectStore])
+  }, [projectStore]);
+
+  useEffect(() => {
+    dispatch(loadProjects());
+  }, [dispatch]);
 
   const downloadResume = async () => {
     await Axios.get(routes.cvUrl);
@@ -60,9 +68,7 @@ const ProjectsPage = () => {
             open={<PreviewIcon fontSize='large' />}
             close={<PreviewIcon fontSize='small' />}
             hide={false}>
-            {focusedProject &&
-              <ProjectPreview project={focusedProject} />
-            }
+            <ProjectPreview project={focusedProject} />
           </Drawer>
         </BrowserView>
       </div>

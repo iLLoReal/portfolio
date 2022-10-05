@@ -1,25 +1,33 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { projectType } from './ProjectsPage';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { projectType } from './ProjectsPage/ProjectsPage';
+import axios from 'axios';
+import * as routes from '../../../routes';
+import { getProjects } from '../../../api/projects';
 
 export interface projectsSliceState {
   projects: projectType[];
-  status: 'idle' | 'rejected' | 'loading'
+  status: 'idle' | 'failed' | 'loading'
+}
+
+export const notFound: projectType = {
+  id: -1,
+  title: 'Pas de projet',
+  stack: ['pas de stack'],
+  previewUrl: 'https://images.pexels.com/photos/159868/lost-cat-tree-sign-fun-159868.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
 }
 
 const initialState: projectsSliceState = {
-  projects: [{
-    id: 0,
-    title: 'Portfolio',
-    stack: ['React', 'TypeScript'],
-    previewUrl: 'https://img.freepik.com/free-psd/phone-14-pro-front-view_187299-22711.jpg?w=826&t=st=1664891574~exp=1664892174~hmac=8a76ae7fad69dcdfe7f2853dc822ecc162b8d2bcf108a6043a95365039565096'
-  },{
-    id: 1,
-    title: 'RFP',
-    stack: ['React', 'TypeScript', 'Strapi', 'Tauri'],
-    previewUrl: 'https://img.freepik.com/free-psd/phone-14-pro-front-view_187299-22711.jpg?w=826&t=st=1664891574~exp=1664892174~hmac=8a76ae7fad69dcdfe7f2853dc822ecc162b8d2bcf108a6043a95365039565096'
-  }],
+  projects: [],
   status: 'idle'
 }
+
+export const loadProjects = createAsyncThunk(
+  'projects/loadProjects',
+  async () => {
+    console.log('ici');
+    return (getProjects())
+  }
+);
 
 const projectsSlice = createSlice({
   name: 'projects',
@@ -30,7 +38,25 @@ const projectsSlice = createSlice({
         state.projects.push(action.payload);
       }
     },
-  }
+  },
+  extraReducers: (builder) => {
+    builder.
+      addCase(loadProjects.pending, (state: projectsSliceState) => {
+        state.status = 'loading'
+        console.log('There')
+      })
+      .addCase(loadProjects.fulfilled, (state: projectsSliceState, action: PayloadAction<projectType[]>) => {
+        state.status = 'idle';
+        console.log('idle');
+        console.log('après transform', action.payload);
+        state.projects = action.payload;
+      })
+      .addCase(loadProjects.rejected, (state: projectsSliceState, action: PayloadAction<any>) => {
+        state.status = 'failed';
+        console.log('failed', action.payload);
+        state.projects.push(notFound);
+      })
+  },
 });
 
 export const { addProject } = projectsSlice.actions

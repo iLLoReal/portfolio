@@ -8,8 +8,8 @@ import store from './state/store';
 import App from "./App";
 import ProjectsPage from "./components/pages/Projects/ProjectsPage/ProjectsPage";
 import ProjectPage from './components/pages/Projects/ProjectPage/ProjectPage';
-import Header  from './components/Template/Header';
-import Footer  from './components/Template/Footer';
+import Header from './components/Template/Header';
+import Footer from './components/Template/Footer';
 
 /*<CardHeader title='Olivier Laffon' action={
   <Avatar onClick={downloadResume}>CV</Avatar>
@@ -40,11 +40,9 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <Router router={router} />
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <Router router={router} />
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
