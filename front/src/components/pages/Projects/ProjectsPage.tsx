@@ -4,7 +4,7 @@ import { Container } from '@mui/system';
 import Axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useAppSelector } from '../../../state/hooks';
-import Drawer from '../../Project/Drawer';
+import Drawer from '../../utils/Drawer';
 import ProjectCard from '../../Project/ProjectCard';
 import ProjectPreview from '../../Project/ProjectPreview';
 import Footer from '../../Template/Footer';
