@@ -1,7 +1,7 @@
 import { withRouter } from "storybook-addon-react-router-v6";
 import ProjectPage from "./ProjectPage";
 
-import store from '../../../state/store';
+import store from '../../../../state/store';
 import { Provider } from "react-redux";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 

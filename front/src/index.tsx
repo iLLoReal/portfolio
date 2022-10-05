@@ -6,8 +6,8 @@ import { Provider } from 'react-redux';
 import reportWebVitals from './reportWebVitals';
 import store from './state/store';
 import App from "./App";
-import ProjectsPage from "./components/pages/Projects/ProjectsPage";
-import ProjectPage from './components/pages/Projects/ProjectPage';
+import ProjectsPage from "./components/pages/Projects/ProjectsPage/ProjectsPage";
+import ProjectPage from './components/pages/Projects/ProjectPage/ProjectPage';
 import Header  from './components/Template/Header';
 import Footer  from './components/Template/Footer';
 

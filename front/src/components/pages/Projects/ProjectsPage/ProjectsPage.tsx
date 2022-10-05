@@ -3,14 +3,14 @@ import { CardHeader, Grid, useMediaQuery } from '@mui/material';
 import { Container } from '@mui/system';
 import Axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useAppSelector } from '../../../state/hooks';
-import Drawer from '../../utils/Drawer';
-import ProjectCard from '../../Project/ProjectCard';
-import ProjectPreview from '../../Project/ProjectPreview';
-import Footer from '../../Template/Footer';
-import Header from '../../Template/Header';
+import { useAppSelector } from '../../../../state/hooks';
+import Drawer from '../../../utils/Drawer';
+import ProjectCard from '../../../Project/ProjectCard';
+import ProjectPreview from '../../../Project/ProjectPreview';
+import Footer from '../../../Template/Footer';
+import Header from '../../../Template/Header';
 import { BrowserView } from 'react-device-detect';
-import * as routes from '../../../routes';
+import * as routes from '../../../../routes';
 
 export type projectType = {
   id: number;
