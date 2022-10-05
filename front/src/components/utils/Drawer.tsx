@@ -10,9 +10,10 @@ type Props = {
   open: React.ReactNode;
   close: React.ReactNode;
   children: React.ReactNode;
+  hide: boolean;
 }
-const Drawer = ({ open, close, children }: Props) => {
-  const [hideMenu, setHideMenu] = useState(true);
+const Drawer = ({ open, close, children, hide }: Props) => {
+  const [hideMenu, setHideMenu] = useState(hide);
 
   return (
     <div>

@@ -10,6 +10,7 @@ import ProjectPreview from '../../Project/ProjectPreview';
 import Footer from '../../Template/Footer';
 import Header from '../../Template/Header';
 import { BrowserView } from 'react-device-detect';
+import * as routes from '../../../routes';
 
 export type projectType = {
   id: number;
@@ -26,10 +27,11 @@ const ProjectsPage = () => {
 
   useEffect(() => {
     setProjectList(projectStore.projects);
+    setFocusedProject(projectStore.projects[0]);
   }, [projectStore])
 
   const downloadResume = async () => {
-    await Axios.get('http://localhost:3001/cv-olivier-laffon-2022.pdf');
+    await Axios.get(routes.cvUrl);
   }
 
   return (
@@ -54,7 +56,10 @@ const ProjectsPage = () => {
           </Grid>
         </Container>
         <BrowserView>
-          <Drawer open={<PreviewIcon fontSize='large' />} close={<PreviewIcon fontSize='small' />}>
+          <Drawer
+            open={<PreviewIcon fontSize='large' />}
+            close={<PreviewIcon fontSize='small' />}
+            hide={false}>
             {focusedProject &&
               <ProjectPreview project={focusedProject} />
             }
