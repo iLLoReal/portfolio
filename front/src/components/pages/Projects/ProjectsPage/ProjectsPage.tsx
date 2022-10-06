@@ -20,7 +20,6 @@ export type projectType = {
   previewUrl: string;
 }
 
-
 const ProjectsPage = () => {
   const projectStore = useAppSelector((state) => state.projectStore)
   const dispatch = useAppDispatch();
@@ -28,7 +27,7 @@ const ProjectsPage = () => {
   const projectList = useMemo<projectType[]>(() => {
     return projectStore.projects;
   }, [projectStore.projects]);
-  const [focusedProject, setFocusedProject] = useState<projectType>(projectList[0] || notFound);
+  const [focusedProject, setFocusedProject] = useState<projectType>( notFound);
 
   useEffect(() => {
     setFocusedProject(projectStore.projects[0]);
@@ -68,7 +67,7 @@ const ProjectsPage = () => {
             open={<PreviewIcon fontSize='large' />}
             close={<PreviewIcon fontSize='small' />}
             hide={false}>
-            <ProjectPreview project={focusedProject} />
+            {focusedProject && <ProjectPreview project={focusedProject} />}
           </Drawer>
         </BrowserView>
       </div>
