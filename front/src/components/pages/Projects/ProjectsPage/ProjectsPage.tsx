@@ -8,7 +8,6 @@ import { useEffect, useMemo, useState } from 'react';
 import { BrowserView } from 'react-device-detect';
 import { useNavigate } from 'react-router-dom';
 import { setIsMobile } from '../../../../appSlice';
-import * as routes from '../../../../routes';
 import { useAppDispatch, useAppSelector } from '../../../../state/hooks';
 import ProjectPreview from '../../../Project/ProjectPreview';
 import Drawer from '../../../utils/Drawer';
