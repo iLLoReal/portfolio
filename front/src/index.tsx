@@ -1,15 +1,13 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import { RouterProvider as Router, createBrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux';
+import { createBrowserRouter, RouterProvider as Router } from 'react-router-dom';
+import App from "./App";
+import DisplayResume from './components/pages/DisplayResume/DisplayResume';
+import ProjectPage from './components/pages/Projects/ProjectPage/ProjectPage';
+import ProjectsPage from "./components/pages/Projects/ProjectsPage/ProjectsPage";
+import './index.css';
 import reportWebVitals from './reportWebVitals';
 import store from './state/store';
-import App from "./App";
-import ProjectsPage from "./components/pages/Projects/ProjectsPage";
-import ProjectPage from './components/pages/Projects/ProjectPage';
-import Header  from './components/Template/Header';
-import Footer  from './components/Template/Footer';
 
 /*<CardHeader title='Olivier Laffon' action={
   <Avatar onClick={downloadResume}>CV</Avatar>
@@ -31,8 +29,11 @@ export const router = createBrowserRouter([
   {
     path: '/projects/:projectTitle',
     element: <ProjectPage />
-  }
-
+  },
+  {
+    path: '/resume',
+    element: <DisplayResume />,
+  },
 ]);
 
 const root = ReactDOM.createRoot(
@@ -40,11 +41,9 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <Router router={router} />
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <Router router={router} />
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

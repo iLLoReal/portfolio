@@ -28,6 +28,9 @@
     },
     "Context": {
       "type": "richtext"
+    },
+    "title": {
+      "type": "string"
     }
   }
 }
