@@ -1,6 +1,9 @@
 .project_preview_media {
   height: 20vh;
   width: 20vh;
+  margin: auto;
+  background-repeat: no-repeat !important;
+  object-fit: contain !important;
 }
 
 @media screen and (min-width:1200px) {
@@ -23,5 +26,3 @@
     width: 30vh;
   }
 }
-
-

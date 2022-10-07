@@ -1,12 +1,11 @@
-import { Collapse } from '@mui/material';
+import  Collapse  from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import Card from '@mui/material/Card';
-import Container from '@mui/material/Container';
-import { useState } from 'react';
 import Tooltip from '@mui/material/Tooltip';
+import { useState } from 'react';
 import './Drawer.scss';
 
-type Props = {
+export type Props = {
   open: React.ReactNode;
   close: React.ReactNode;
   children: React.ReactNode;
@@ -16,23 +15,21 @@ const Drawer = ({ open, close, children, hide }: Props) => {
   const [hideMenu, setHideMenu] = useState(hide);
 
   return (
-    <div>
-      <Container className='side_menu_container'>
-        <Tooltip title='Prévisualiser le projet'>
-          <Avatar
-            className={'side_menu_container_avatar_close'}
-            variant={hideMenu ? 'rounded' : 'square'}
-            onClick={() => setHideMenu(!hideMenu)}
-          >
-            {hideMenu ? open : close}
-          </Avatar>
-        </Tooltip>
-        <Collapse orientation="horizontal" in={!hideMenu}>
-          <Card>
-            {children}
-          </Card>
-        </Collapse>
-      </Container>
+    <div className='side_menu_container'>
+      <Tooltip title='Prévisualiser le projet'>
+        <Avatar
+          className={'side_menu_container_avatar_close'}
+          variant={hideMenu ? 'rounded' : 'square'}
+          onClick={() => setHideMenu(!hideMenu)}
+        >
+          {hideMenu ? open : close}
+        </Avatar>
+      </Tooltip>
+      <Collapse orientation="horizontal" in={!hideMenu}>
+        <Card sx={{textAlign: 'center', padding: '10%'}}>
+          {children}
+        </Card>
+      </Collapse>
     </div>
   )
 }

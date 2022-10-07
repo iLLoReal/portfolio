@@ -1,8 +1,6 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { projectType } from './ProjectsPage/ProjectsPage';
-import axios from 'axios';
-import * as routes from '../../../routes';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getProjects } from '../../../api/projects';
+import { projectType } from './ProjectsPage/ProjectsPage';
 
 export interface projectsSliceState {
   projects: projectType[];
@@ -13,7 +11,8 @@ export const notFound: projectType = {
   id: -1,
   title: 'Pas de projet',
   stack: ['pas de stack'],
-  previewUrl: 'https://images.pexels.com/photos/159868/lost-cat-tree-sign-fun-159868.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+  previewUrl: 'https://images.pexels.com/photos/159868/lost-cat-tree-sign-fun-159868.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+  context: 'Aucun projet n\'est disponible pour l\'instant !',
 }
 
 const initialState: projectsSliceState = {
@@ -40,8 +39,7 @@ const projectsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.
-      addCase(loadProjects.pending, (state: projectsSliceState) => {
+    builder.addCase(loadProjects.pending, (state: projectsSliceState) => {
         state.status = 'loading'
         console.log('There')
       })
@@ -54,7 +52,8 @@ const projectsSlice = createSlice({
       .addCase(loadProjects.rejected, (state: projectsSliceState, action: PayloadAction<any>) => {
         state.status = 'failed';
         console.log('failed', action.payload);
-        state.projects.push(notFound);
+        if (!state.projects.length)
+          state.projects.push(notFound);
       })
   },
 });

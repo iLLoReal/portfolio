@@ -17,6 +17,7 @@ const transformResponse = (originalResponse: any) => {
       title: item.attributes.title,
       previewUrl: 'http://localhost:1337' + item.attributes.Preview.data.attributes.formats.large.url,
       stack: item.attributes.stack.split('\n'),
+      context: item.attributes.Context,
     }
   })
   return transformedResponse;
@@ -24,4 +25,4 @@ const transformResponse = (originalResponse: any) => {
 
 export const getProjects = async () => {
   return transformResponse(await axios.get(routes.projectsUrl + '?' + populateProjects()));;
-} 
+}

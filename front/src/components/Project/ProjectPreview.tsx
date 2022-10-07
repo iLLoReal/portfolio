@@ -1,4 +1,6 @@
-import { CardHeader, CardMedia, useMediaQuery } from '@mui/material';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
 import { useEffect } from 'react';
 import { projectType } from '../pages/Projects/ProjectsPage/ProjectsPage';
 import './ProjectPreview.scss';
@@ -14,12 +16,15 @@ const ProjectPreview = ({ project }: Props) => {
   }, [project])
 
   return (
-    <div style={{ width: '100%', textAlign: 'center' }}>
+    <div style={{ height: '100vh', width: '100%', textAlign: 'center' }}>
       <CardHeader title={project.title} />
       <CardMedia
         className='project_preview_media'
         image={project.previewUrl}
-        component='img'/>
+        component='img'
+      />
+
+      <CardContent>{project.context}</CardContent>
     </div>
   )
 }

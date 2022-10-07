@@ -1,10 +1,16 @@
-import { Button, Card, CardHeader, Grid } from '@mui/material';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import InputLabel from '@mui/material/InputLabel';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAppSelector } from '../../../../state/hooks';
+import ProjectPreview from '../../../Project/ProjectPreview';
 import { projectType } from '../ProjectsPage/ProjectsPage';
+import { notFound } from '../projectsSlice';
 
-const defaultProject: projectType = { id: -1, title: 'none', stack: ['none'], previewUrl: 'https://img.freepik.com/free-psd/phone-14-pro-front-view_187299-22711.jpg?w=826&t=st=1664891574~exp=1664892174~hmac=8a76ae7fad69dcdfe7f2853dc822ecc162b8d2bcf108a6043a95365039565096' };
+const defaultProject = notFound;
 
 /**
  * Composant qui prend une page, représentant un projet en fonction de son titre
@@ -33,20 +39,22 @@ const ProjectPage = () => {
   }, [projectStore, projectTitle])
 
   return (
-    <Card>
-      <Button onClick={handleBackToMain}>
-        Back
-      </Button>
-      <CardHeader title={project.title} />
-      <Grid container>
-        {project.stack.map(
-          (technologie: string, id: number) =>
-            <Grid item xs={1} key={'stack/' + id}>
-              {technologie}
-            </Grid>
-        )}
-      </Grid>
-    </Card>
+      <Card>
+        <Button onClick={handleBackToMain}>
+          Back
+        </Button>
+        <CardContent>
+          <CardHeader title='Stack:'/>
+          {project.stack.map(
+            (technologie: string, id: number) =>
+              <InputLabel key={'stack/' + id}>
+                {technologie}
+              </InputLabel>
+          )}
+          <CardHeader title='Preview'/>
+            <ProjectPreview project={project} />
+        </CardContent>
+      </Card>
   )
 }
 
