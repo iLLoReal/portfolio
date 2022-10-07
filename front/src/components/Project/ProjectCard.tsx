@@ -1,8 +1,7 @@
 import { Card, CardContent, CardHeader } from '@mui/material';
-import React, { Dispatch, SetStateAction } from 'react'
+import React, { Dispatch, SetStateAction } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { projectType } from '../pages/Projects/ProjectsPage/ProjectsPage'
-import ProjectPreview from './ProjectPreview';
+import { projectType } from '../pages/Projects/ProjectsPage/ProjectsPage';
 
 type Props = {
   project: projectType;
