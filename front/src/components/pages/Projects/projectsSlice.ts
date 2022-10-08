@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getProjects } from '../../../api/projects';
 import { projectType } from './ProjectsPage/ProjectsPage';
+import rfpImage from './rfp_preview.jpg';
+import portfolioImage from './portfolio_preview.jpg';
 
 export interface projectsSliceState {
   projects: projectType[];
@@ -16,7 +18,22 @@ export const notFound: projectType = {
 }
 
 const initialState: projectsSliceState = {
-  projects: [],
+  projects: [
+    {
+      id: 0,
+      title: 'RFP',
+      stack: ['React', 'Typescript', 'Strapi', 'Tauri (Rust)'],
+      previewUrl: rfpImage,
+      context: "Dans le cadre de mon stage de fin d'étude, en tant qu'auto-entrepreneur, j'ai eu l'occasion de réaliser la solution d'un client dans le domaine de l'art plastique, qui souhaitait son propre CMS, répondant à des besoins spécifiques.",
+    },
+    {
+      id: 1,
+      title: 'Portfolio',
+      stack: ['React', 'TypeScript', 'MUI', 'Strapi'],
+      previewUrl: portfolioImage,
+      context: 'Réalisation de mon portfolio',
+    },
+  ],
   status: 'idle'
 }
 
@@ -40,9 +57,9 @@ const projectsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(loadProjects.pending, (state: projectsSliceState) => {
-        state.status = 'loading'
-        console.log('There')
-      })
+      state.status = 'loading'
+      console.log('There')
+    })
       .addCase(loadProjects.fulfilled, (state: projectsSliceState, action: PayloadAction<projectType[]>) => {
         state.status = 'idle';
         console.log('idle');
