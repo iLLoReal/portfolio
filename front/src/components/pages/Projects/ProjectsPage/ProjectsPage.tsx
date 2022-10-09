@@ -50,24 +50,27 @@ const ProjectsPage = () => {
   }
 
   return (
-    <Grid
-      container
-      direction="column"
-      alignItems="center"
-      wrap='nowrap'
-    >
-      <Grid container justifyContent='center'>
-        <SocialNetwork icon={(<GitHubIcon />)} onClickHandler={() => { }} />
-        <SocialNetwork icon={(<LinkedInIcon />)} onClickHandler={() => { }} />
-        <SocialNetwork icon={<p>cv</p>} onClickHandler={downloadResume} />
+    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
+      <Grid
+        container
+        direction="column"
+        alignItems="center"
+        wrap='nowrap'
+      >
+        <Grid container justifyContent='center' sx={{ margin: '2rem' }}>
+          <SocialNetwork icon={(<GitHubIcon />)} onClickHandler={() => { }} />
+          <SocialNetwork icon={(<LinkedInIcon />)} onClickHandler={() => { }} />
+          <SocialNetwork icon={<p>cv</p>} onClickHandler={downloadResume} />
+        </Grid>
+        <ProjectsDisplay projectList={projectList} setFocusedProject={setFocusedProject} />
+
       </Grid>
-      <ProjectsDisplay projectList={projectList} setFocusedProject={setFocusedProject} />
       <BrowserView>
         <Drawer open={<PreviewIcon fontSize='large' />} close={<PreviewIcon fontSize='small' />} hide={false}>
           {focusedProject && <ProjectPreview project={focusedProject} />}
         </Drawer>
       </BrowserView>
-    </Grid>
+    </div>
   )
 }
 
