@@ -1,9 +1,7 @@
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import PreviewIcon from '@mui/icons-material/Preview';
-import Button from '@mui/material/Button';
-import CardHeader from '@mui/material/CardHeader';
-import Link from '@mui/material/Link';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import Container from '@mui/system/Container';
 import { useEffect, useMemo, useState } from 'react';
 import { BrowserView } from 'react-device-detect';
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +12,8 @@ import Drawer from '../../../utils/Drawer';
 import { loadProjects, notFound } from '../projectsSlice';
 import ProjectsDisplay from './ProjectsDisplay';
 
+import Grid from '@mui/material/Grid';
+import SocialNetwork from './SocialNetwork';
 
 export type projectType = {
   id: number;
@@ -50,25 +50,26 @@ const ProjectsPage = () => {
   }
 
   return (
-    <div>
-      <div style={{ height: '100%', display: 'flex', flexDirection: notOnMobile ? 'row' : 'column', justifyContent: 'left' }}>
-        <Container sx={{ height: '100vh', textAlign: 'center' }}>
-          <CardHeader title='iLLo' />
-          <ProjectsDisplay projectList={projectList} setFocusedProject={setFocusedProject} />
-        </Container>
-        <BrowserView>
-          <Drawer open={<PreviewIcon fontSize='large' />} close={<PreviewIcon fontSize='small' />} hide={false}>
-            {focusedProject && <ProjectPreview project={focusedProject} />}
-          </Drawer>
-        </BrowserView>
-      </div>
-      <div style={{ textAlign: 'center' }}>
-        <Link underline='none'>
-          <Button onClick={() => downloadResume()}>
-            cv / resume
-          </Button>
-        </Link>
-      </div>
+    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
+      <Grid
+        container
+        direction="column"
+        alignItems="center"
+        wrap='nowrap'
+      >
+        <Grid container justifyContent='center' sx={{ margin: '2rem' }}>
+          <SocialNetwork icon={(<GitHubIcon />)} onClickHandler={() => { }} />
+          <SocialNetwork icon={(<LinkedInIcon />)} onClickHandler={() => { }} />
+          <SocialNetwork icon={<p>cv</p>} onClickHandler={downloadResume} />
+        </Grid>
+        <ProjectsDisplay projectList={projectList} setFocusedProject={setFocusedProject} />
+
+      </Grid>
+      <BrowserView>
+        <Drawer open={<PreviewIcon fontSize='large' />} close={<PreviewIcon fontSize='small' />} hide={false}>
+          {focusedProject && <ProjectPreview project={focusedProject} />}
+        </Drawer>
+      </BrowserView>
     </div>
   )
 }

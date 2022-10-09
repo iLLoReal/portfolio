@@ -2,6 +2,7 @@ import Grid from '@mui/material/Grid'
 import React, { Dispatch, SetStateAction } from 'react'
 import ProjectCard from '../../../Project/ProjectCard';
 import { projectType } from './ProjectsPage'
+import './ProjectsDisplay.scss';
 
 
 type Props = {
@@ -9,15 +10,14 @@ type Props = {
   setFocusedProject: Dispatch<SetStateAction<projectType>>;
 }
 
-const ProjectsDisplay = ({projectList, setFocusedProject}: Props) => {
+const ProjectsDisplay = ({ projectList, setFocusedProject }: Props) => {
   return (
-    <div>
-      <Grid container spacing={1}>
-        {projectList.map((project: projectType, id: number) =>
-          <Grid key={'project/' + id + '/' + project.title} item>
-            <ProjectCard project={project} select={setFocusedProject}></ProjectCard>
-          </Grid>)}
-      </Grid></div>
+    <Grid container className='projects_display_container'>
+      {projectList.map((project: projectType, id: number) =>
+        <Grid item xs={12} className='projects_display_item' key={'project/' + id + '/' + project.title}>
+            <ProjectCard project={project} select={setFocusedProject} />
+        </Grid>)}
+    </Grid>
   )
 }
 

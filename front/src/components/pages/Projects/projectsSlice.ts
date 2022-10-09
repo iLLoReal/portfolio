@@ -32,6 +32,24 @@ const initialState: projectsSliceState = {
       stack: ['React', 'TypeScript', 'MUI', 'Strapi'],
       previewUrl: portfolioImage,
       context: 'Réalisation de mon portfolio',
+    }, {
+      id: 2,
+      title: 'Portfolio',
+      stack: ['React', 'TypeScript', 'MUI', 'Strapi'],
+      previewUrl: portfolioImage,
+      context: 'Réalisation de mon portfolio',
+    }, {
+      id: 3,
+      title: 'Portfolio',
+      stack: ['React', 'TypeScript', 'MUI', 'Strapi'],
+      previewUrl: portfolioImage,
+      context: 'Réalisation de mon portfolio',
+    }, {
+      id: 4,
+      title: 'Portfolio',
+      stack: ['React', 'TypeScript', 'MUI', 'Strapi'],
+      previewUrl: portfolioImage,
+      context: 'Réalisation de mon portfolio',
     },
   ],
   status: 'idle'

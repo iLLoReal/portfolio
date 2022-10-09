@@ -26,7 +26,7 @@ const Drawer = ({ open, close, children, hide }: Props) => {
         </Avatar>
       </Tooltip>
       <Collapse orientation="horizontal" in={!hideMenu}>
-        <Card sx={{textAlign: 'center', padding: '10%'}}>
+        <Card className='side_menu_card_children_display'>
           {children}
         </Card>
       </Collapse>
