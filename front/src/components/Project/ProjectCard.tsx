@@ -1,10 +1,9 @@
-import { Button, Card, CardContent, CardHeader, CardMedia, Grid, Typography } from '@mui/material';
+import { Button, Card, CardContent, CardHeader, Grid, Typography } from '@mui/material';
 import Link from '@mui/material/Link';
 import React, { Dispatch, SetStateAction } from 'react';
 import { MobileOnlyView } from 'react-device-detect';
 import { useNavigate } from 'react-router-dom';
 import { projectType } from '../pages/Projects/ProjectsPage/ProjectsPage';
-import ProjectPreview from './ProjectPreview';
 
 type Props = {
   project: projectType;
