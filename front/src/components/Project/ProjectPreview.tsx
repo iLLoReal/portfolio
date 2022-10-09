@@ -16,7 +16,7 @@ const ProjectPreview = ({ project }: Props) => {
   }, [project])
 
   return (
-    <div style={{ height: '100vh', width: '100%', textAlign: 'center' }}>
+    <div className='project_preview_container'>
       <CardHeader title={project.title} />
       <CardMedia
         className='project_preview_media'

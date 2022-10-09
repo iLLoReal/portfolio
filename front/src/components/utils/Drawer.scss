@@ -6,7 +6,22 @@
 
 }
 
-.side_menu_container  {
+.side_menu_card_children_display {
+  text-align: center !important;
+  padding: 10% !important;
+  background-color: black !important;
+  color: white !important;
+  border: 10px solid white;
+}
+
+@media screen and (max-width: 500px) {
+  .side_menu_container {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.side_menu_container {
   display: flex !important;
   flex-direction: row !important;
   position: relative;
