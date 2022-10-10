@@ -66,7 +66,10 @@ const ProjectsPage = () => {
 
       </Grid>
       <BrowserView>
-        <Drawer open={<PreviewIcon fontSize='large' />} close={<PreviewIcon fontSize='small' />} hide={false}>
+        <Drawer
+          open={<PreviewIcon fontSize='large' />}
+          close={<PreviewIcon fontSize='small' />}
+          hide={false}>
           {focusedProject && <ProjectPreview project={focusedProject} />}
         </Drawer>
       </BrowserView>
