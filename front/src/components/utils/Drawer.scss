@@ -1,28 +1,29 @@
 .side_menu_container_avatar_close {
-  color: black;
-  background-color: white;
-  border: 1px solid black;
+  border: 1px solid #272727;
   border-radius: 10% 10% 10% 10%;
-
+  height: 100vh !important;
 }
 
 .side_menu_card_children_display {
   text-align: center !important;
   padding: 10% !important;
-  background-color: black !important;
-  color: white !important;
-  border: 10px solid white;
+  background-color: #272727 !important;
+  color: #F0F7F4 !important;
+  border: 10px solid inherit;
 }
 
 @media screen and (max-width: 500px) {
   .side_menu_container {
     flex-direction: column;
     width: 100%;
+    height: 500px;
   }
 }
 
 .side_menu_container {
+  top: 0 !important;
   display: flex !important;
   flex-direction: row !important;
-  position: relative;
+  position: sticky !important;
+  height: 1px !important;
 }

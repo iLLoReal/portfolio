@@ -10,18 +10,21 @@ import { useNavigate } from 'react-router-dom';
 const DisplayResume = () => {
   const navigate = useNavigate();
   return (
-    <Container className='display_resume_container'>
-      <KeyboardBackspaceIcon
-        fontSize='large'
-        sx={{ cursor: 'pointer', color: 'lightblue' }}
-        onClick={() => navigate('/')} />
-      <Card className='display_resume_card'>
-        <CardMedia
-          className='display_resume_card_media'
-          image={resume} />
-      </Card >
-      <SubdirectoryArrowRightIcon fontSize='small' /> 2022
-    </Container>
+    <div style={{ backgroundColor: '#009FB7', height: 'auto' }}>
+      <Container className='display_resume_container'>
+        <KeyboardBackspaceIcon
+          fontSize='large'
+          sx={{ cursor: 'pointer', color: 'lightblue' }}
+          onClick={() => navigate('/')} />
+        <Card className='display_resume_card'>
+          <CardMedia
+            className='display_resume_card_media'
+            image={resume} />
+        </Card >
+        <SubdirectoryArrowRightIcon fontSize='small' sx={{ color: 'lightblue' }} />
+        2022
+      </Container>
+    </div>
   )
 }
 
