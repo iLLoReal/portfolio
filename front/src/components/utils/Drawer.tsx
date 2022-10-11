@@ -1,4 +1,4 @@
-import  Collapse  from '@mui/material/Collapse';
+import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import Card from '@mui/material/Card';
 import Tooltip from '@mui/material/Tooltip';
@@ -21,6 +21,7 @@ const Drawer = ({ open, close, children, hide }: Props) => {
           className={'side_menu_container_avatar_close'}
           variant={hideMenu ? 'rounded' : 'square'}
           onClick={() => setHideMenu(!hideMenu)}
+          sx={{ writingMode: 'tb-rl', transform: 'rotate(-180deg)' }}
         >
           {hideMenu ? open : close}
         </Avatar>

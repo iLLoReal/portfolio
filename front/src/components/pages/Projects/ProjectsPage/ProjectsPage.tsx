@@ -1,6 +1,6 @@
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import PreviewIcon from '@mui/icons-material/Preview';
+import Avatar from '@mui/material/Avatar';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useEffect, useMemo, useState } from 'react';
 import { BrowserView } from 'react-device-detect';
@@ -50,14 +50,15 @@ const ProjectsPage = () => {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
+    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', height: 'auto' }}>
       <Grid
         container
         direction="column"
         alignItems="center"
         wrap='nowrap'
+        sx={{ backgroundColor: '#009FB7' }}
       >
-        <Grid container justifyContent='center' sx={{ margin: '2rem' }}>
+        <Grid container justifyContent='center' sx={{ backgroundColor: '#009FB7' }}>
           <SocialNetwork icon={(<GitHubIcon />)} onClickHandler={() => { }} />
           <SocialNetwork icon={(<LinkedInIcon />)} onClickHandler={() => { }} />
           <SocialNetwork icon={<p>cv</p>} onClickHandler={downloadResume} />
@@ -67,9 +68,10 @@ const ProjectsPage = () => {
       </Grid>
       <BrowserView>
         <Drawer
-          open={<PreviewIcon fontSize='large' />}
-          close={<PreviewIcon fontSize='small' />}
-          hide={false}>
+          open={<p>SHOW</p>}
+          close={<p>HIDE</p>}
+          hide={false}
+        >
           {focusedProject && <ProjectPreview project={focusedProject} />}
         </Drawer>
       </BrowserView>

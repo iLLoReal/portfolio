@@ -12,7 +12,7 @@ const SocialNetwork = ({icon, onClickHandler = () => {}}: Props) => {
     <div>
       <Avatar>
         <Link underline='none'>
-          <Button onClick={() => onClickHandler()}>
+          <Button onClick={() => onClickHandler()} sx={{color: '#FED766', backgroundColor: '#009FB7'}}>
             {icon}
           </Button>
         </Link>

@@ -20,16 +20,16 @@ const ProjectCard = ({ project, select }: Props) => {
     <Card
       onMouseEnter={() => select(project)}
       onClick={(e) => handleProjectClick(e)}
-      sx={{ textAlign: 'center' }}
+      sx={{ textAlign: 'center', color: '#F0F7F4', backgroundColor: '#009FB7' }}
     >
-      <CardHeader title={project.title} sx={{ backgroundColor: 'lightgrey' }} />
-      <CardContent sx={{ textAlign: 'left' }}>
-        <Typography sx={{ fontSize: 25 }} color="text.secondary" gutterBottom>
+      <CardHeader title={project.title} sx={{ backgroundColor: '#272727', color: '#E8E1EF'}} />
+      <CardContent sx={{ textAlign: 'left' }}>    
+        <Typography sx={{ fontSize: 25, color: 'inherit'}} color="text.secondary" gutterBottom>
           Stack:
         </Typography>
         <Grid
           container
-          justifyContent={'left'}
+          justifyContent={'center'}
         >
           <Grid item>
             {project.stack.map((techno: string, id: number) =>
