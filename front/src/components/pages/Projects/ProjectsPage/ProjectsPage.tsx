@@ -44,7 +44,7 @@ const ProjectsPage = () => {
   }, [notOnMobile, dispatch])
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', height: 'auto' }}>
+    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', height: '100%', backgroundColor: '#009FB7'}}>
       <Grid
         container
         direction="column"

@@ -19,12 +19,13 @@ const ProjectCard = ({ project, select }: Props) => {
   return (
     <Card
       onMouseEnter={() => select(project)}
+      variant='elevation'
       onClick={(e) => handleProjectClick(e)}
-      sx={{ textAlign: 'center', color: '#F0F7F4', backgroundColor: '#009FB7' }}
+      sx={{ textAlign: 'center', color: '#F0F7F4', backgroundColor: '#009FB7', border: 'none', boxShadow: 'none' }}
     >
-      <CardHeader title={project.title} sx={{ backgroundColor: '#272727', color: '#E8E1EF'}} />
-      <CardContent sx={{ textAlign: 'left' }}>    
-        <Typography sx={{ fontSize: 25, color: 'inherit'}} color="text.secondary" gutterBottom>
+      <CardHeader title={project.title} sx={{ backgroundColor: '#272727', color: '#E8E1EF' }} />
+      <CardContent sx={{ textAlign: 'left' }}>
+        <Typography sx={{ fontSize: 25, color: 'inherit' }} color="text.secondary" gutterBottom>
           Stack:
         </Typography>
         <Grid
