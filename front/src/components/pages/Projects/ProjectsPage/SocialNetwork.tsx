@@ -4,15 +4,18 @@ import React from 'react'
 
 type Props = {
   icon: React.ReactElement;
-  onClickHandler: () => void;
+  redirectUrl: string
 }
 
-const SocialNetwork = ({icon, onClickHandler = () => {}}: Props) => {
+const SocialNetwork = ({icon, redirectUrl = 'none'}: Props) => {
+  const onClickHandler = (link: string) => {
+      window.location.replace(link)
+  }
   return (
     <div>
       <Avatar>
         <Link underline='none'>
-          <Button onClick={() => onClickHandler()} sx={{color: '#FED766', backgroundColor: '#009FB7'}}>
+          <Button onClick={() => onClickHandler(redirectUrl)} sx={{color: '#FED766', backgroundColor: '#009FB7'}}>
             {icon}
           </Button>
         </Link>

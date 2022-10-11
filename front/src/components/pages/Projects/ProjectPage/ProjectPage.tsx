@@ -9,6 +9,7 @@ import { useAppSelector } from '../../../../state/hooks';
 import ProjectPreview from '../../../Project/ProjectPreview';
 import { projectType } from '../ProjectsPage/ProjectsPage';
 import { notFound } from '../projectsSlice';
+import './ProjectPage.scss';
 
 const defaultProject = notFound;
 
@@ -39,22 +40,26 @@ const ProjectPage = () => {
   }, [projectStore, projectTitle])
 
   return (
-      <Card>
-        <Button onClick={handleBackToMain}>
-          Back
-        </Button>
-        <CardContent>
-          <CardHeader title='Stack:'/>
+    <Card sx={{ backgroundColor: '#009FB7', color: '#E8E1EF' }}>
+      <Button onClick={handleBackToMain}>
+        Back
+      </Button>
+      <CardContent>
+        <CardHeader title='Stack:' sx={{ backgroundColor: '#272727' }} />
+        <CardContent className='project_page_stack'>
           {project.stack.map(
             (technologie: string, id: number) =>
-              <InputLabel key={'stack/' + id}>
+              <InputLabel sx={{ color: '#E8E1EF' }} key={'stack/' + id}>
                 {technologie}
               </InputLabel>
           )}
-          <CardHeader title='Preview'/>
-            <ProjectPreview project={project} />
         </CardContent>
-      </Card>
+        <div style={{color: '#272727'}}>
+          <CardHeader title='Preview' sx={{ textAlign: 'center' }} />
+          <ProjectPreview project={project} />
+        </div>
+      </CardContent>
+    </Card>
   )
 }
 

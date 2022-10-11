@@ -23,7 +23,6 @@ const ProjectPreview = ({ project }: Props) => {
         image={project.previewUrl}
         component='img'
       />
-
       <CardContent>{project.context}</CardContent>
     </div>
   )

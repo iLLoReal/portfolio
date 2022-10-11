@@ -1,7 +1,6 @@
 .side_menu_container_avatar_close {
-  border: 1px solid black;
+  border: 1px solid #272727;
   border-radius: 10% 10% 10% 10%;
-  
   height: 100vh !important;
 }
 
@@ -10,7 +9,7 @@
   padding: 10% !important;
   background-color: #272727 !important;
   color: #F0F7F4 !important;
-  border: 10px solid #009FB7;
+  border: 10px solid inherit;
 }
 
 @media screen and (max-width: 500px) {
