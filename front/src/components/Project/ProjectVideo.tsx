@@ -1,13 +1,6 @@
-import React from 'react'
-import CardMedia from '@mui/material/CardMedia'
-import { projectType } from '../pages/Projects/ProjectsPage/ProjectsPage'
-import ProjectPreview from './ProjectPreview';
-import Grid from '@mui/material/Grid';
-import CardHeader from '@mui/material/CardHeader'
-import Avatar from '@mui/material/Avatar'
-import IconButton from '@mui/material/IconButton'
 import CardContent from '@mui/material/CardContent';
-import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import { projectType } from '../pages/Projects/ProjectsPage/ProjectsPage';
 
 type Props = {
   project: projectType;

@@ -7,7 +7,6 @@ import InputLabel from '@mui/material/InputLabel';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAppSelector } from '../../../../state/hooks';
-import ProjectPreview from '../../../Project/ProjectPreview';
 import ProjectVideo from '../../../Project/ProjectVideo';
 import { projectType } from '../ProjectsPage/ProjectsPage';
 import { notFound } from '../projectsSlice';
