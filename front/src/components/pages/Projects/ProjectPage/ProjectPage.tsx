@@ -1,12 +1,14 @@
-import Button from '@mui/material/Button';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
+import Grid from '@mui/material/Grid';
 import InputLabel from '@mui/material/InputLabel';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAppSelector } from '../../../../state/hooks';
 import ProjectPreview from '../../../Project/ProjectPreview';
+import ProjectVideo from '../../../Project/ProjectVideo';
 import { projectType } from '../ProjectsPage/ProjectsPage';
 import { notFound } from '../projectsSlice';
 import './ProjectPage.scss';
@@ -22,10 +24,6 @@ const ProjectPage = () => {
   const [project, setProject] = useState<projectType>(defaultProject)
   let navigate = useNavigate();
 
-  const handleBackToMain = () => {
-    navigate('/projects');
-  }
-
   const findProjectByTitle = (projects: projectType[], title: string) => {
     const projectNotFound = defaultProject;
     const projectFound = projects.find((project: projectType) => project.title.toLowerCase().includes(title));
@@ -40,25 +38,23 @@ const ProjectPage = () => {
   }, [projectStore, projectTitle])
 
   return (
-    <Card sx={{ backgroundColor: '#009FB7', color: '#E8E1EF' }}>
-      <Button onClick={handleBackToMain}>
-        Back
-      </Button>
-      <CardContent>
-        <CardHeader title='Stack:' sx={{ backgroundColor: '#272727' }} />
-        <CardContent className='project_page_stack'>
+    <Card sx={{ backgroundColor: '#009FB7', color: '#E8E1EF', display: 'flex', flexDirection: 'column' }}>
+      <CardContent className='project_page_stack'>
+      <KeyboardBackspaceIcon
+        fontSize='large'
+        sx={{ cursor: 'pointer', color: 'lightblue' }}
+        onClick={() => navigate('/')} />
+        <CardHeader title={project.title} />
+        <Grid container justifyContent={'space-around'}>
           {project.stack.map(
             (technologie: string, id: number) =>
               <InputLabel sx={{ color: '#E8E1EF' }} key={'stack/' + id}>
                 {technologie}
               </InputLabel>
           )}
-        </CardContent>
-        <div style={{color: '#272727'}}>
-          <CardHeader title='Preview' sx={{ textAlign: 'center' }} />
-          <ProjectPreview project={project} />
-        </div>
+        </Grid>
       </CardContent>
+      <ProjectVideo project={project} />
     </Card>
   )
 }

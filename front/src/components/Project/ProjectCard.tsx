@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, CardHeader, Grid, Typography } from '@mui/material';
+import { Button, Card, CardContent, CardHeader, CardMedia, Grid, Typography } from '@mui/material';
 import Link from '@mui/material/Link';
 import React, { Dispatch, SetStateAction } from 'react';
 import { MobileOnlyView } from 'react-device-detect';
@@ -18,27 +18,44 @@ const ProjectCard = ({ project, select }: Props) => {
   }
   return (
     <Card
-      onMouseEnter={() => select(project)}
       variant='elevation'
       onClick={(e) => handleProjectClick(e)}
       sx={{ textAlign: 'center', color: '#F0F7F4', backgroundColor: '#009FB7', border: 'none', boxShadow: 'none' }}
     >
       <CardHeader title={`Projet ${project.title}`} sx={{ backgroundColor: '#272727', color: '#E8E1EF' }} />
-      <CardContent sx={{ textAlign: 'left', border: '0.2rem solid #272727', margin: '0.1rem' }}>
+      <CardContent
+        sx={{ textAlign: 'left', border: '0.2rem solid #272727', margin: '0.1rem' }}>
         <Typography sx={{ fontSize: 25, color: 'inherit' }} color="text.secondary" gutterBottom>
           Stack:
         </Typography>
         <Grid
           container
-          justifyContent={'center'}
+          direction={'column'}
+          justifyContent={'space-around'}
         >
           <Grid item>
-            {project.stack.map((techno: string, id: number) =>
-              <p key={project.id + '/stack/' + id + '/' + techno}>
-                {techno}
-              </p>)}
+            <Grid container justifyContent={'space-around'}>
+              {project.stack.map((techno: string, id: number) =>
+                <p key={project.id + '/stack/' + id + '/' + techno}>
+                  {techno}
+                </p>)}
+            </Grid>
           </Grid>
+          <Grid item>
+            <Grid item>
+              <Grid container justifyContent={'space-around'}>
+                <p style={{ textAlign: 'center' }}>{project.context}</p>
+              </Grid>
+            </Grid>
 
+            <Grid
+              onMouseEnter={() => select(project)}
+              container
+              justifyContent={'center'}
+            >
+              <CardMedia title={project.title} component='img' image={project.previewUrl} sx={{ maxWidth: '50%', objectFit: 'cover' }} />
+            </Grid>
+          </Grid>
         </Grid>
       </CardContent>
       <MobileOnlyView>

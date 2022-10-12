@@ -15,6 +15,7 @@ export const notFound: projectType = {
   stack: ['pas de stack'],
   previewUrl: 'https://images.pexels.com/photos/159868/lost-cat-tree-sign-fun-159868.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
   context: 'Aucun projet n\'est disponible pour l\'instant !',
+  videoUrl: 'https://www.youtube.com/watch?v=eHrcRqu_Es4'
 }
 
 const initialState: projectsSliceState = {
@@ -25,6 +26,7 @@ const initialState: projectsSliceState = {
       stack: ['React', 'Typescript', 'Strapi', 'Tauri (Rust)'],
       previewUrl: rfpImage,
       context: "Dans le cadre de mon stage de fin d'étude, en tant qu'auto-entrepreneur, j'ai eu l'occasion de réaliser la solution d'un client dans le domaine de l'art plastique, qui souhaitait son propre CMS, répondant à des besoins spécifiques.",
+      videoUrl: "https://www.youtube.com/embed/xLykUIn6XI0"
     },
     {
       id: 1,
@@ -32,6 +34,7 @@ const initialState: projectsSliceState = {
       stack: ['React', 'TypeScript', 'MUI', 'Strapi'],
       previewUrl: portfolioImage,
       context: 'Réalisation de mon portfolio',
+      videoUrl: "https://www.youtube.com/watch?v=yhNewL6d6U8"//https://www.youtube.com/embed/yhNewL6d6U8
     }
   ],
   status: 'idle'

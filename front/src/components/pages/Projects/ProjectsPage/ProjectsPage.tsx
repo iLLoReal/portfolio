@@ -20,6 +20,7 @@ export type projectType = {
   stack: string[];
   previewUrl: string;
   context: string;
+  videoUrl: string;
 }
 
 const ProjectsPage = () => {
