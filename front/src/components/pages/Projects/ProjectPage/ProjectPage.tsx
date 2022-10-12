@@ -1,16 +1,11 @@
-import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardHeader from '@mui/material/CardHeader';
-import Grid from '@mui/material/Grid';
-import InputLabel from '@mui/material/InputLabel';
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useAppSelector } from '../../../../state/hooks';
 import ProjectVideo from '../../../Project/ProjectVideo';
 import { projectType } from '../ProjectsPage/ProjectsPage';
 import { notFound } from '../projectsSlice';
 import './ProjectPage.scss';
+import ProjectPageHeader from './ProjectPageHeader';
 
 const defaultProject = notFound;
 
@@ -21,7 +16,7 @@ const ProjectPage = () => {
   const { projectTitle } = useParams() || '0';
   const projectStore = useAppSelector((state) => state.projectStore)
   const [project, setProject] = useState<projectType>(defaultProject)
-  let navigate = useNavigate();
+
 
   const findProjectByTitle = (projects: projectType[], title: string) => {
     const projectNotFound = defaultProject;
@@ -37,24 +32,10 @@ const ProjectPage = () => {
   }, [projectStore, projectTitle])
 
   return (
-    <Card sx={{ backgroundColor: '#009FB7', color: '#E8E1EF', display: 'flex', flexDirection: 'column' }}>
-      <CardContent className='project_page_stack'>
-      <KeyboardBackspaceIcon
-        fontSize='large'
-        sx={{ cursor: 'pointer', color: 'lightblue' }}
-        onClick={() => navigate('/')} />
-        <CardHeader title={project.title} />
-        <Grid container justifyContent={'space-around'}>
-          {project.stack.map(
-            (technologie: string, id: number) =>
-              <InputLabel sx={{ color: '#E8E1EF' }} key={'stack/' + id}>
-                {technologie}
-              </InputLabel>
-          )}
-        </Grid>
-      </CardContent>
+    <div className='project_page_container'>
+      <ProjectPageHeader project={project} />
       <ProjectVideo project={project} />
-    </Card>
+    </div>
   )
 }
 

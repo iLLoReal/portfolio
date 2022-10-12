@@ -1,0 +1,28 @@
+.project_page_stack {
+  visibility: hidden;
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  background-color: #272727;
+}
+
+.project_page_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #272727;
+  width: 100vw;
+}
+
+.project_page_navigate_back {
+  cursor: pointer;
+  color: lightblue;
+}
+
+@media screen and (min-width: 400px) {
+  .project_page_stack {
+    visibility: visible;
+    justify-content: space-around;
+  }
+}
