@@ -36,24 +36,18 @@ const ProjectCard = ({ project, select }: Props) => {
           <Grid item>
             <Grid container justifyContent={'space-around'}>
               {project.stack.map((techno: string, id: number) =>
-                <p key={project.id + '/stack/' + id + '/' + techno}>
+                <p style={{ fontSize: '4vw' }} key={project.id + '/stack/' + id + '/' + techno}>
                   {techno}
                 </p>)}
             </Grid>
           </Grid>
           <Grid item>
-            <Grid item>
-              <Grid container justifyContent={'space-around'}>
-                <p style={{ textAlign: 'center' }}>{project.context}</p>
-              </Grid>
-            </Grid>
-
             <Grid
               onMouseEnter={() => select(project)}
               container
               justifyContent={'center'}
             >
-              <CardMedia title={project.title} component='img' image={project.previewUrl} sx={{ maxWidth: '50%', objectFit: 'cover' }} />
+              <CardMedia title={project.title} component='img' image={project.previewUrl} sx={{ maxWidth: 'auto', height: '56.25vw', objectFit: 'cover' }} />
             </Grid>
           </Grid>
         </Grid>
