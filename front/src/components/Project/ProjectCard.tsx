@@ -47,7 +47,7 @@ const ProjectCard = ({ project, select }: Props) => {
               container
               justifyContent={'center'}
             >
-              <CardMedia title={project.title} component='img' image={project.previewUrl} sx={{ maxWidth: 'auto', height: '56.25vw', objectFit: 'cover' }} />
+              <CardMedia title={project.title} component='img' image={project.previewUrl} sx={{ maxWidth: 'auto', height: '56.25vw', objectFit: 'contain' }} />
             </Grid>
           </Grid>
         </Grid>

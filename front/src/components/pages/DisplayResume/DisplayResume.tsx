@@ -1,7 +1,7 @@
 import { Container } from '@mui/material';
 import Card from '@mui/material/Card'
 import CardMedia from '@mui/material/CardMedia'
-import resume from './cv-olivier-laffon-2022.jpg'
+import resume from './cv-olivier-laffon-2022-2.jpg'
 import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import './DisplayResume.scss';
@@ -19,7 +19,8 @@ const DisplayResume = () => {
         <Card className='display_resume_card'>
           <CardMedia
             className='display_resume_card_media'
-            image={resume} />
+            image={resume}
+          />
         </Card >
         <SubdirectoryArrowRightIcon fontSize='small' sx={{ color: 'lightblue' }} />
         2022
