@@ -2,9 +2,12 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAppSelector } from '../../../../state/hooks';
 import ProjectVideo from '../../../Project/ProjectVideo';
+import Responsive from '../../../utils/Responsive';
+import Footer from '../../Footer';
 import { projectType } from '../ProjectsPage/ProjectsPage';
 import { notFound } from '../projectsSlice';
 import './ProjectPage.scss';
+import ProjectPageFooter from './ProjectPageFooter';
 import ProjectPageHeader from './ProjectPageHeader';
 
 const defaultProject = notFound;
@@ -35,6 +38,7 @@ const ProjectPage = () => {
     <div className='project_page_container'>
       <ProjectPageHeader project={project} />
       <ProjectVideo project={project} />
+      <ProjectPageFooter project={project} />
     </div>
   )
 }

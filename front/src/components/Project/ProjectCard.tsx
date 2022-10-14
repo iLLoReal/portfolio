@@ -13,7 +13,6 @@ type Props = {
 const ProjectCard = ({ project, select }: Props) => {
   let navigate = useNavigate();
   const handleProjectClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    console.log('Ici');
     navigate("/projects/" + project.title);
   }
   return (

@@ -21,7 +21,7 @@ const ProjectPageHeader = ({ project }: Props) => {
       />
       <CardHeader title={project.title} />
       <div className='project_page_stack'>
-        {project.stack.map((tech: string, id: number) => (<p id={'stack/' + id}>{tech}</p>))}
+        {project.stack.map((tech: string, id: number) => (<p id={tech + 'header/stack/' + id}>{tech}</p>))}
       </div>
     </div>
   )
