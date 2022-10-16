@@ -17,9 +17,9 @@ const ProjectVideo = ({ project }: Props) => {
         flexDirection: 'column',
         alignItems: 'center'
       }}>
-        <CardHeader title="Preview" />
-        <SocialNetwork icon={<GitHubIcon style={{ color: 'black' }} />} redirectUrl={project.gitUrl} />
-
+        <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', margin: '1rem'}}>
+          GitHub<SocialNetwork icon={<GitHubIcon style={{ color: 'black' }} />} redirectUrl={project.gitUrl} />
+        </div>
         <iframe className='project_video_media' title={project.title} src={project.videoUrl} />
       </Responsive>
     </div>

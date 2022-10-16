@@ -12,12 +12,13 @@ import ProjectPreview from '../../../Project/ProjectPreview';
 import Drawer from '../../../utils/Drawer';
 import { loadProjects, notFound } from '../projectsSlice';
 import ProjectsDisplay from './ProjectsDisplay';
+import SearchBar from './SearchBar';
 import SocialNetwork from './SocialNetwork';
 
 export type projectType = {
   id: number;
   title: string;
-  stack: string[];
+  stack: { title: string; link?: string; }[];
   previewUrl: string;
   context: string;
   videoUrl: string;
@@ -32,6 +33,8 @@ const ProjectsPage = () => {
     return projectStore.projects;
   }, [projectStore.projects]);
   const [focusedProject, setFocusedProject] = useState<projectType>(notFound);
+
+
 
   useEffect(() => {
     setFocusedProject(projectStore.projects[0]);
@@ -59,7 +62,14 @@ const ProjectsPage = () => {
           <SocialNetwork icon={(<LinkedInIcon />)} redirectUrl='https://www.linkedin.com/in/olivier-laffon/' />
           <SocialNetwork icon={<p>cv</p>} redirectUrl='/resume' />
         </Grid>
-        <ProjectsDisplay projectList={projectList} setFocusedProject={setFocusedProject} />
+        <SearchBar
+          projectStore={projectStore}
+          isOnMobile={!notOnMobile}
+        />
+        <ProjectsDisplay
+          projectList={projectList}
+          setFocusedProject={setFocusedProject}
+        />
 
       </Grid>
       <BrowserView>

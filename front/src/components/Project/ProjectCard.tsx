@@ -24,19 +24,19 @@ const ProjectCard = ({ project, select }: Props) => {
       <CardHeader title={`Projet ${project.title}`} sx={{ backgroundColor: '#272727', color: '#E8E1EF' }} />
       <CardContent
         sx={{ textAlign: 'left', border: '0.2rem solid #272727', margin: '0.1rem' }}>
-        <Typography sx={{ fontSize: 25, color: 'inherit' }} color="text.secondary" gutterBottom>
-          Stack:
-        </Typography>
         <Grid
           container
           direction={'column'}
-          justifyContent={'space-around'}
+          justifyContent={'space-between'}
         >
           <Grid item>
+            <Typography sx={{ fontSize: '0.4rem', color: 'inherit' }} color="text.secondary" gutterBottom>
+              Stack:
+            </Typography>
             <Grid container justifyContent={'space-around'}>
-              {project.stack.map((techno: string, id: number) =>
-                <p style={{ fontSize: '4vw' }} key={project.id + '/stack/' + id + '/' + techno}>
-                  {techno}
+              {project.stack.map((techno: { title: string; link?: string }, id: number) =>
+                <p style={{ fontSize: '0.7rem' }} key={project.id + '/stack/' + id + '/' + techno}>
+                  {techno.title}
                 </p>)}
             </Grid>
           </Grid>
@@ -44,7 +44,8 @@ const ProjectCard = ({ project, select }: Props) => {
             <Grid
               onMouseEnter={() => select(project)}
               container
-              justifyContent={'center'}
+              direction={'column'}
+              justifyContent='center'
             >
               <CardMedia title={project.title} component='img' image={project.previewUrl} sx={{ maxWidth: 'auto', height: '56.25vw', objectFit: 'contain' }} />
             </Grid>
