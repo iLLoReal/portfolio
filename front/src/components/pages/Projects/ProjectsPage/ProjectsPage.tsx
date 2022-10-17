@@ -3,7 +3,6 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Tooltip from '@mui/material/Tooltip';
 import useMediaQuery from '@mui/material/useMediaQuery';
