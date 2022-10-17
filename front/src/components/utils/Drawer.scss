@@ -1,7 +1,7 @@
 .side_menu_container_avatar_close {
   border: 1px solid #272727;
   border-radius: 10% 10% 10% 10%;
-  height: 100vh !important;
+  height: 100% !important;
 }
 
 .side_menu_card_children_display {
@@ -26,5 +26,7 @@
   display: flex !important;
   flex-direction: row !important;
   position: sticky !important;
-  height: 1px !important;
+  height: 100% !important;
+  width: 100%!important;
+  background-color: red;
 }

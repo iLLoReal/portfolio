@@ -1,18 +1,20 @@
+import { FilterOptionsState } from '@mui/material';
 import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import React, { useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { projectsSliceState } from '../projectsSlice';
 import { projectType } from './ProjectsPage';
 
 type Props = {
-  projectStore: projectsSliceState;
+  projectList: projectType[];
   isOnMobile: boolean;
 }
 
-const SearchBar = ({ projectStore, isOnMobile }: Props) => {
-  const navigate = useNavigate();
+type optionsType = {
+  label: string;
+};
+
+const SearchBar = ({ projectList, isOnMobile }: Props) => {
   const [searchedProject, setSearchedProject] = useState<string>('');
   const [borderColor, setBorderColor] = useState<string>('white');
   const label = useMemo<string>(() => {
@@ -20,65 +22,73 @@ const SearchBar = ({ projectStore, isOnMobile }: Props) => {
       return 'HIT ENTER'
     return 'projects'
   }, [searchedProject, isOnMobile]);
-  const projectSearchList = useMemo<{ label: string }[]>(() => {
-    return projectStore.projects.map((project: projectType) => ({ label: project.title }))
-  }, [projectStore.projects]);
+
+  const renderInputStyle = {
+    input: { color: 'white' },
+    label: {
+      color: 'white',
+      "&.Mui-focused": {
+        color: borderColor
+      }
+    },
+    "& .MuiOutlinedInput-root": {
+      "&:hover fieldset": {
+        borderWidth: '2px',
+        borderColor: borderColor,
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: borderColor,
+      },
+      fieldset: {
+        borderColor: borderColor,
+      },
+    }
+  }
+
+  const projectSearchList = useMemo<optionsType[]>(() => {
+    return projectList.map((project: projectType) => ({ label: project.title }))
+  }, [projectList]);
 
   const handleSearchValidation = (key?: React.KeyboardEvent<HTMLDivElement>) => {
     if (key?.code === 'Enter' || !key) {
       console.log('about to navigate to ', searchedProject);
-      navigate(`/projects/${searchedProject}`);
+      window.location.replace(`/projects/${searchedProject}`);
     }
   }
 
-  const handleSearchInputChange = (value: { label: string; } | null) => {
+  const handleSearchInputChange = (value: optionsType | null) => {
     console.log('Value is : ', value);
     setSearchedProject(value?.label || '')
   }
 
+
+
+  const filterSearchBarOptions = (
+    options: optionsType[],
+    state: FilterOptionsState<optionsType>) => {
+    const newOptions: optionsType[] = [];
+    options.forEach((option) => {
+      if (option.label.toLowerCase().includes(state.inputValue.toLowerCase())) {
+        newOptions.push(option);
+      }
+    });
+    setBorderColor(newOptions.length ? 'white' : 'red');
+    return newOptions;
+  }
+
   return (
-    <div style={{ display: 'flex', color: 'white' }}>
+    <div style={{margin: '10px'}}>
       <Autocomplete
         disablePortal
         options={projectSearchList}
-        filterOptions={(options, state) => {
-          const newOptions: { label: string; }[] = [];
-          options.forEach((option) => {
-            if (option.label.toLowerCase().includes(state.inputValue.toLowerCase())) {
-              newOptions.push(option);
-            }
-          });
-          setBorderColor(newOptions.length ? 'white' : 'red');
-          return newOptions;
-        }}
+        filterOptions={(options, state) => filterSearchBarOptions(options, state)}
         sx={{ width: 300 }}
         renderInput={(params) =>
           <TextField
             {...params}
             variant='outlined'
             label={label}
-            sx={{
-              input: { color: 'white' },
-              label: {
-                color: 'white',
-                "&.Mui-focused": {
-                  color: borderColor
-                }
-              },
-              "& .MuiOutlinedInput-root": {
-                "&:hover fieldset": {
-                  borderWidth: '2px',
-                  borderColor: borderColor,
-                },
-                "&.Mui-focused fieldset": {
-                  borderColor: borderColor,
-                },
-                fieldset: {
-                  borderColor: borderColor,
-                },
-              },
-
-            }}
+            sx={{ ...renderInputStyle }}
             onChange={() => console.log((params.InputProps.endAdornment as React.ReactElement).props)}
           />}
         onChange={(event, value) => handleSearchInputChange(value)}
@@ -88,7 +98,9 @@ const SearchBar = ({ projectStore, isOnMobile }: Props) => {
         <Button
           variant='outlined'
           onClick={() => handleSearchValidation()}
-        >Ok</Button> : null}
+        >
+          Ok
+        </Button> : null}
     </div>
   )
 }

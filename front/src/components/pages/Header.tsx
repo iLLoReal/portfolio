@@ -1,10 +1,15 @@
 import React from 'react'
 
-type Props = {}
+type Props = {
+  children: React.ReactElement[];
+  className?: string;
+}
 
-const Header = (props: Props) => {
+const Header = ({ children, className = 'none' }: Props) => {
   return (
-    <div>Header</div>
+    <div className={className}>
+      {children.map((child: React.ReactElement, id: number) => <div key={'header/' + id}>{child}</div>)}
+    </div>
   )
 }
 

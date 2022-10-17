@@ -2,7 +2,6 @@ import { Button, Card, CardContent, CardHeader, CardMedia, Grid, Typography } fr
 import Link from '@mui/material/Link';
 import React, { Dispatch, SetStateAction } from 'react';
 import { MobileOnlyView } from 'react-device-detect';
-import { useNavigate } from 'react-router-dom';
 import { projectType } from '../pages/Projects/ProjectsPage/ProjectsPage';
 
 type Props = {
@@ -11,47 +10,41 @@ type Props = {
 }
 
 const ProjectCard = ({ project, select }: Props) => {
-  let navigate = useNavigate();
   const handleProjectClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    navigate("/projects/" + project.title);
+    window.location.replace("/projects/" + project.title);
   }
   return (
-    <Card
-      variant='elevation'
+    <div
       onClick={(e) => handleProjectClick(e)}
-      sx={{ textAlign: 'center', color: '#F0F7F4', backgroundColor: '#009FB7', border: 'none', boxShadow: 'none' }}
+      style={{ textAlign: 'center', color: '#F0F7F4', backgroundColor: '#009FB7', border: 'none', boxShadow: 'none' }}
     >
       <CardHeader title={`Projet ${project.title}`} sx={{ backgroundColor: '#272727', color: '#E8E1EF' }} />
-      <CardContent
-        sx={{ textAlign: 'left', border: '0.2rem solid #272727', margin: '0.1rem' }}>
-        <Grid
-          container
-          direction={'column'}
-          justifyContent={'space-between'}
+      <div
+        style={{ textAlign: 'left', border: '0.2rem solid #272727', margin: '0.1rem' }}>
+        <div
+          style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}
         >
-          <Grid item>
+          <div>
             <Typography sx={{ fontSize: '0.4rem', color: 'inherit' }} color="text.secondary" gutterBottom>
               Stack:
             </Typography>
-            <Grid container justifyContent={'space-around'}>
+            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
               {project.stack.map((techno: { title: string; link?: string }, id: number) =>
-                <p style={{ fontSize: '0.7rem' }} key={project.id + '/stack/' + id + '/' + techno}>
+                <p style={{ fontSize: '1vw' }} key={project.id + '/stack/' + id + '/' + techno}>
                   {techno.title}
                 </p>)}
-            </Grid>
-          </Grid>
-          <Grid item>
-            <Grid
+            </div>
+          </div>
+          <div>
+            <div
               onMouseEnter={() => select(project)}
-              container
-              direction={'column'}
-              justifyContent='center'
+              style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
             >
               <CardMedia title={project.title} component='img' image={project.previewUrl} sx={{ maxWidth: 'auto', height: '56.25vw', objectFit: 'contain' }} />
-            </Grid>
-          </Grid>
-        </Grid>
-      </CardContent>
+            </div>
+          </div>
+        </div>
+      </div>
       <MobileOnlyView>
         <Link underline='none'>
           <Button onClick={() => select(project)}>
@@ -59,7 +52,7 @@ const ProjectCard = ({ project, select }: Props) => {
           </Button>
         </Link>
       </MobileOnlyView>
-    </Card>
+    </div>
   )
 }
 

@@ -1,7 +1,5 @@
-import GitHubIcon from '@mui/icons-material/GitHub';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import Grid from '@mui/material/Grid';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useEffect, useMemo, useState } from 'react';
@@ -11,9 +9,10 @@ import { useAppDispatch, useAppSelector } from '../../../../state/hooks';
 import ProjectPreview from '../../../Project/ProjectPreview';
 import Drawer from '../../../utils/Drawer';
 import { loadProjects, notFound } from '../projectsSlice';
-import ProjectsDisplay from './ProjectsDisplay';
-import SearchBar from './SearchBar';
-import SocialNetwork from './SocialNetwork';
+import ProjectsContent from './ProjectsContent';
+import ProjectsFooter from './ProjectsFooter';
+import ProjectsHeader from './ProjectsHeader';
+import './ProjectsPage.scss';
 
 export type projectType = {
   id: number;
@@ -27,14 +26,16 @@ export type projectType = {
 
 const ProjectsPage = () => {
   const projectStore = useAppSelector((state) => state.projectStore);
-  const dispatch = useAppDispatch();
   const notOnMobile = useMediaQuery('(min-width:400px)');
+  const dispatch = useAppDispatch();
   const projectList = useMemo<projectType[]>(() => {
     return projectStore.projects;
   }, [projectStore.projects]);
   const [focusedProject, setFocusedProject] = useState<projectType>(notFound);
 
-
+  useEffect(() => {
+    dispatch(setIsMobile(!notOnMobile))
+  }, [notOnMobile, dispatch]);
 
   useEffect(() => {
     setFocusedProject(projectStore.projects[0]);
@@ -44,43 +45,32 @@ const ProjectsPage = () => {
     dispatch(loadProjects());
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(setIsMobile(!notOnMobile))
-  }, [notOnMobile, dispatch])
-
   return (
-    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', height: '100%', backgroundColor: '#009FB7' }}>
-      <Grid
-        container
-        direction="column"
-        alignItems="center"
-        wrap='nowrap'
-        sx={{ backgroundColor: '#009FB7' }}
+    <div className='projects_page_container'>
+      <div
+        style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',  justifyContent: 'space-between', backgroundColor: '#009FB7' }}
       >
-        <Grid container justifyContent='center' sx={{ margin: '2rem', backgroundColor: '#009FB7' }}>
-          <SocialNetwork icon={(<GitHubIcon />)} redirectUrl='https://github.com/iLLoReal' />
-          <SocialNetwork icon={(<LinkedInIcon />)} redirectUrl='https://www.linkedin.com/in/olivier-laffon/' />
-          <SocialNetwork icon={<p>cv</p>} redirectUrl='/resume' />
-        </Grid>
-        <SearchBar
-          projectStore={projectStore}
-          isOnMobile={!notOnMobile}
+        <ProjectsHeader
+          projectList={projectList}
+          notOnMobile={notOnMobile}
         />
-        <ProjectsDisplay
+        <ProjectsContent
           projectList={projectList}
           setFocusedProject={setFocusedProject}
         />
-
-      </Grid>
-      <BrowserView>
-        <Drawer
-          open={<p>Preview<KeyboardArrowRightIcon /></p>}
-          close={<p>Preview<KeyboardArrowLeftIcon /></p>}
-          hide={false}
-        >
-          {focusedProject && <ProjectPreview project={focusedProject} />}
-        </Drawer>
-      </BrowserView>
+        <ProjectsFooter />
+      </div>
+      <div style={{height: '100%', width: '100%'}}>
+        <BrowserView>
+          <Drawer
+            open={<p>Preview<KeyboardArrowRightIcon /></p>}
+            close={<p>Preview<KeyboardArrowLeftIcon /></p>}
+            hide={false}
+          >
+            {focusedProject && <ProjectPreview project={focusedProject} />}
+          </Drawer>
+        </BrowserView>
+      </div>
     </div>
   )
 }
