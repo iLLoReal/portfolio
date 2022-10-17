@@ -48,7 +48,21 @@ const initialState: projectsSliceState = {
       context: 'Réalisation de mon portfolio',
       videoUrl: "https://www.youtube.com/watch?v=yhNewL6d6U8",//https://www.youtube.com/embed/yhNewL6d6U8
       gitUrl: 'https://github.com/iLLoReal/portfolio',
-    }
+    },
+    {
+      id: 2,
+      title: 'Autre projet',
+      stack: [
+        { title: 'React', link: 'https://fr.reactjs.org/' },
+        { title: 'Typescript', link: 'https://www.typescriptlang.org/' },
+        { title: 'MUI', link: 'https://mui.com/' },
+        { title: 'Strapi', link: 'https://strapi.io/' },
+      ],
+      previewUrl: portfolioImage,
+      context: 'Réalisation de mon portfolio',
+      videoUrl: "https://www.youtube.com/watch?v=yhNewL6d6U8",//https://www.youtube.com/embed/yhNewL6d6U8
+      gitUrl: 'https://github.com/iLLoReal/portfolio',
+    },
   ],
   status: 'idle'
 }

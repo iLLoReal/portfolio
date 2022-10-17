@@ -35,7 +35,7 @@ const ProjectCard = ({ project, select }: Props) => {
             </Typography>
             <Grid container justifyContent={'space-around'}>
               {project.stack.map((techno: { title: string; link?: string }, id: number) =>
-                <p style={{ fontSize: '0.7rem' }} key={project.id + '/stack/' + id + '/' + techno}>
+                <p style={{ fontSize: '2rem' }} key={project.id + '/stack/' + id + '/' + techno}>
                   {techno.title}
                 </p>)}
             </Grid>

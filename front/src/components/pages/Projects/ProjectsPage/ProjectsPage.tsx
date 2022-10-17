@@ -2,7 +2,10 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
+import Tooltip from '@mui/material/Tooltip';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useEffect, useMemo, useState } from 'react';
 import { BrowserView } from 'react-device-detect';
@@ -33,8 +36,12 @@ const ProjectsPage = () => {
     return projectStore.projects;
   }, [projectStore.projects]);
   const [focusedProject, setFocusedProject] = useState<projectType>(notFound);
+  const [isDrawerHidden, setIsDrawerHidden] = useState<boolean>(false);
 
 
+  useEffect(() => {
+    console.log("isDrawerHidden: ", isDrawerHidden);
+  }, [isDrawerHidden])
 
   useEffect(() => {
     setFocusedProject(projectStore.projects[0]);
@@ -49,7 +56,13 @@ const ProjectsPage = () => {
   }, [notOnMobile, dispatch])
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', height: '100%', backgroundColor: '#009FB7' }}>
+    <div style={{
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      height: 'auto',
+      backgroundColor: 'red'
+    }}>
       <Grid
         container
         direction="column"
@@ -66,21 +79,41 @@ const ProjectsPage = () => {
           projectStore={projectStore}
           isOnMobile={!notOnMobile}
         />
+        {
+          isDrawerHidden && (
+            <BrowserView>
+              <div style={{margin: '10px'}}>
+                <Tooltip title='Prévisualiser le projet'>
+                  <Avatar
+                    variant={isDrawerHidden ? 'rounded' : 'square'}
+                    onClick={() => setIsDrawerHidden(false)}
+                    sx={{ width: '100vh' }}
+                  >
+                    <p>Preview<KeyboardArrowRightIcon /></p>
+                  </Avatar>
+                </Tooltip>
+              </div>
+            </BrowserView>
+          )
+        }
+
         <ProjectsDisplay
           projectList={projectList}
           setFocusedProject={setFocusedProject}
         />
-
       </Grid>
-      <BrowserView>
-        <Drawer
-          open={<p>Preview<KeyboardArrowRightIcon /></p>}
-          close={<p>Preview<KeyboardArrowLeftIcon /></p>}
-          hide={false}
-        >
-          {focusedProject && <ProjectPreview project={focusedProject} />}
-        </Drawer>
-      </BrowserView>
+      {!isDrawerHidden &&
+        <BrowserView>
+          <Drawer
+            open={<p>Preview<KeyboardArrowRightIcon /></p>}
+            close={<p>Preview<KeyboardArrowLeftIcon /></p>}
+            hide={false}
+            isHiddenHandler={setIsDrawerHidden}
+          >
+            {focusedProject && <ProjectPreview project={focusedProject} />}
+          </Drawer>
+        </BrowserView>
+      }
     </div>
   )
 }

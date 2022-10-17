@@ -1,5 +1,4 @@
 import GitHubIcon from '@mui/icons-material/GitHub';
-import CardHeader from '@mui/material/CardHeader';
 import { projectType } from '../pages/Projects/ProjectsPage/ProjectsPage';
 import SocialNetwork from '../pages/Projects/ProjectsPage/SocialNetwork';
 import Responsive from '../utils/Responsive';
