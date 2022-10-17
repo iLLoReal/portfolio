@@ -75,8 +75,8 @@ const ProjectsPage = () => {
         />
         {
           isDrawerHidden && (
-            <BrowserView style={{width: '100%'}}>
-              <div style={{ width: '100%', margin: '10px' }}>
+            <BrowserView style={{width: '100%', position: 'sticky', top: '0'}}>
+              <div style={{width: '100%', margin: '10px' }}>
                 <Tooltip title='Prévisualiser le projet'>
                   <Avatar
                     variant={isDrawerHidden ? 'rounded' : 'square'}
