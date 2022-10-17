@@ -37,11 +37,6 @@ const ProjectsPage = () => {
   const [focusedProject, setFocusedProject] = useState<projectType>(notFound);
   const [isDrawerHidden, setIsDrawerHidden] = useState<boolean>(false);
 
-
-  useEffect(() => {
-    console.log("isDrawerHidden: ", isDrawerHidden);
-  }, [isDrawerHidden])
-
   useEffect(() => {
     setFocusedProject(projectStore.projects[0]);
   }, [projectStore]);
@@ -60,7 +55,7 @@ const ProjectsPage = () => {
       flexDirection: 'row',
       justifyContent: 'space-around',
       height: 'auto',
-      backgroundColor: 'red'
+      backgroundColor: 'red',
     }}>
       <Grid
         container
@@ -80,13 +75,13 @@ const ProjectsPage = () => {
         />
         {
           isDrawerHidden && (
-            <BrowserView>
-              <div style={{margin: '10px'}}>
+            <BrowserView style={{width: '100%'}}>
+              <div style={{ width: '100%', margin: '10px' }}>
                 <Tooltip title='Prévisualiser le projet'>
                   <Avatar
                     variant={isDrawerHidden ? 'rounded' : 'square'}
                     onClick={() => setIsDrawerHidden(false)}
-                    sx={{ width: '100vh' }}
+                    sx={{ width: '100%' }}
                   >
                     <p>Preview<KeyboardArrowRightIcon /></p>
                   </Avatar>
