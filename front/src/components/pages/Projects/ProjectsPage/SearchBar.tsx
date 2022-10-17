@@ -23,7 +23,6 @@ const SearchBar = ({ projectStore, isOnMobile }: Props) => {
   const projectSearchList = useMemo<{ label: string }[]>(() => {
     return projectStore.projects.map((project: projectType) => ({ label: project.title }))
   }, [projectStore.projects]);
-  const [currentOptions, setCurrentOptions] = useState<string[]>([]);
 
   const handleSearchValidation = (key?: React.KeyboardEvent<HTMLDivElement>) => {
     if (key?.code === 'Enter' || !key) {
