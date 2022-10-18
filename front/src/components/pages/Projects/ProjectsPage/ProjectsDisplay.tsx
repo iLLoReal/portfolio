@@ -16,7 +16,7 @@ const ProjectsDisplay = ({ projectList, setFocusedProject }: Props) => {
       <Grid container className='projects_display_container'>
         {projectList.map((project: projectType, id: number) =>
 
-          <Grid item xs={12} className='projects_display_item' key={'project/' + id + '/' + project.title}>
+          <Grid item  key={'project/' + id + '/' + project.title}>
             <ProjectCard project={project} select={setFocusedProject} />
           </Grid>)}
       </Grid>

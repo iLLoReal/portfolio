@@ -4,10 +4,11 @@ import React from 'react'
 
 type Props = {
   icon: React.ReactElement;
-  redirectUrl: string
+  redirectUrl: string;
+  glow?: string;
 }
 
-const SocialNetwork = ({icon, redirectUrl = 'none'}: Props) => {
+const SocialNetwork = ({icon, redirectUrl = 'none', glow='#FED766'}: Props) => {
   const onClickHandler = (link: string) => {
       window.location.replace(link)
   }
@@ -15,7 +16,7 @@ const SocialNetwork = ({icon, redirectUrl = 'none'}: Props) => {
     <div>
       <Avatar>
         <Link underline='none'>
-          <Button onClick={() => onClickHandler(redirectUrl)} sx={{color: '#FED766', backgroundColor: '#009FB7'}}>
+          <Button onClick={() => onClickHandler(redirectUrl)} sx={{color: glow, backgroundColor: '#009FB7'}}>
             {icon}
           </Button>
         </Link>

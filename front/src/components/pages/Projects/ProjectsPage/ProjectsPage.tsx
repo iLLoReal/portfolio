@@ -12,10 +12,14 @@ import { setIsMobile } from '../../../../appSlice';
 import { useAppDispatch, useAppSelector } from '../../../../state/hooks';
 import ProjectPreview from '../../../Project/ProjectPreview';
 import Drawer from '../../../utils/Drawer';
+import Footer from '../../Footer';
 import { loadProjects, notFound } from '../projectsSlice';
 import ProjectsDisplay from './ProjectsDisplay';
 import SearchBar from './SearchBar';
 import SocialNetwork from './SocialNetwork';
+import './ProjectsPage.scss';
+import { Button, Card } from '@mui/material';
+import { bgColor } from '../../../utils/Colors';
 
 export type projectType = {
   id: number;
@@ -64,10 +68,10 @@ const ProjectsPage = () => {
         wrap='nowrap'
         sx={{ backgroundColor: '#009FB7' }}
       >
-        <Grid container justifyContent='center' sx={{ margin: '2rem', backgroundColor: '#009FB7' }}>
-          <SocialNetwork icon={(<GitHubIcon />)} redirectUrl='https://github.com/iLLoReal' />
-          <SocialNetwork icon={(<LinkedInIcon />)} redirectUrl='https://www.linkedin.com/in/olivier-laffon/' />
-          <SocialNetwork icon={<p>cv</p>} redirectUrl='/resume' />
+        <Grid container justifyContent='center' sx={{ margin: '2rem', backgroundColor: bgColor.blueCyan }}>
+          <SocialNetwork icon={(<GitHubIcon />)} redirectUrl='https://github.com/iLLoReal' glow={bgColor.black}/>
+          <SocialNetwork icon={(<LinkedInIcon />)} redirectUrl='https://www.linkedin.com/in/olivier-laffon/' glow={bgColor.black} />
+          <SocialNetwork icon={<p>cv</p>} redirectUrl='/resume' glow={bgColor.black} />
         </Grid>
         <SearchBar
           projectStore={projectStore}
@@ -75,8 +79,8 @@ const ProjectsPage = () => {
         />
         {
           isDrawerHidden && (
-            <BrowserView style={{width: '100%', position: 'sticky', top: '0'}}>
-              <div style={{width: '100%', margin: '10px' }}>
+            <BrowserView style={{ width: '100%', position: 'sticky', top: '0' }}>
+              <div style={{ width: '100%', margin: '10px' }}>
                 <Tooltip title='Prévisualiser le projet'>
                   <Avatar
                     variant={isDrawerHidden ? 'rounded' : 'square'}
@@ -95,6 +99,12 @@ const ProjectsPage = () => {
           projectList={projectList}
           setFocusedProject={setFocusedProject}
         />
+        <Footer className='projects_footer' width='100%'>
+          <Card sx={{ backgroundColor: 'inherit', color: 'inherit', border: 'none', boxShadow: 'none' }}>
+            <Button sx={{color: 'inherit'}} onClick={() => window.location.replace('mailto:olivier.laffon.dev@gmail.com')}>
+              Contact</Button>
+          </Card>
+        </Footer>
       </Grid>
       {!isDrawerHidden &&
         <BrowserView>
