@@ -61,6 +61,7 @@ const SearchBar = ({ projectStore, isOnMobile }: Props) => {
               variant='outlined'
               label={label}
               sx={{
+                backgroundColor: color.textField,
                 input: { color: color.searchBar },
                 label: {
                   color: color.searchBar,

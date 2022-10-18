@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAppSelector } from '../../../../state/hooks';
 import ProjectVideo from '../../../Project/ProjectVideo';
+import bgColor from '../../../utils/Colors';
 import { projectType } from '../ProjectsPage/ProjectsPage';
 import { notFound } from '../projectsSlice';
 import './ProjectPage.scss';
@@ -33,10 +34,10 @@ const ProjectPage = () => {
   }, [projectStore, projectTitle])
 
   return (
-    <div className='project_page_container'>
+    <div className='project_page_container' style={{height: '100%', backgroundColor: bgColor.outter}}>
       <ProjectPageHeader project={project} />
       <ProjectVideo project={project} />
-      <ProjectPageFooter project={project} />
+      <ProjectPageFooter project={project} style={{marginTop: '1rem'}} />
     </div>
   )
 }
