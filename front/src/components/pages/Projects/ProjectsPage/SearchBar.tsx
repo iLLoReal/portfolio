@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import bgColor, { colors } from '../../../utils/Colors';
+import { colors } from '../../../utils/Colors';
 import { projectsSliceState } from '../projectsSlice';
 import { projectType } from './ProjectsPage';
 

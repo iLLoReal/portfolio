@@ -1,5 +1,5 @@
 import { Avatar, Button, Link } from '@mui/material';
-import React from 'react'
+import React from 'react';
 
 
 type Props = {
