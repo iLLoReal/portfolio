@@ -1,5 +1,5 @@
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
-import { Button, Container } from '@mui/material';
+import { Avatar, Button, Container } from '@mui/material';
 import Card from '@mui/material/Card';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useEffect, useState } from 'react';
@@ -7,7 +7,7 @@ import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import { useNavigate } from 'react-router-dom';
 import './DisplayResume.scss';
-
+import DownloadIcon from '@mui/icons-material/Download';
 pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.12.313/pdf.worker.js`;
 
 const DisplayResume = () => {
@@ -35,12 +35,12 @@ const DisplayResume = () => {
     else if (below250)
       setResolution([161, 61]);
   }, [below250, from250to349, from350to599, from600to1199, over1200]);
-  
+
   const onDocumentLoadSuccess = ({ numPages }: { numPages: any }) => {
     setNumPages(numPages);
   }
   return (
-    <div style={{ backgroundColor: '#009FB7', height: 'auto' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', backgroundColor: '#009FB7', height: 'auto' }}>
       <Container className='display_resume_container'>
         <KeyboardBackspaceIcon
           fontSize='large'
@@ -70,7 +70,18 @@ const DisplayResume = () => {
               {pageNumber}/{numPages}{'>'}
             </Button>
           }
-        </Card >
+          <div style={{ display: 'flex', flexDirection: 'row-reverse', alignSelf: 'flex-end', marginRight: '20px' }}>
+            <Avatar>
+              <a
+                href={'./cv-olivier-laffon-2022-2.pdf'}
+                download
+              >
+                <DownloadIcon />
+              </a>
+            </Avatar>
+          </div>
+        </Card>
+
       </Container>
     </div>
   )
