@@ -63,7 +63,6 @@ const ProjectsPage = () => {
       flexDirection: 'row',
       justifyContent: 'space-around',
       height: 'auto',
-      backgroundColor: 'red',
     }}>
       <Grid
         container

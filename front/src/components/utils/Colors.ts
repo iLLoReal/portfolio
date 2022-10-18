@@ -40,7 +40,7 @@ export const color = {
   footer: bgColor.outter,
   header: bgColor.outter,
   textField: colors.pureWhite,
-
+  backArrows: bgColor.cardHeader,
 }
 
 export default bgColor;

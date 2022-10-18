@@ -8,6 +8,7 @@ import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import { useNavigate } from 'react-router-dom';
 import './DisplayResume.scss';
 import DownloadIcon from '@mui/icons-material/Download';
+import bgColor, { color } from '../../utils/Colors';
 pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.12.313/pdf.worker.js`;
 
 const DisplayResume = () => {
@@ -40,11 +41,11 @@ const DisplayResume = () => {
     setNumPages(numPages);
   }
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', backgroundColor: '#009FB7', height: 'auto' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', backgroundColor: bgColor.outter, height: 'auto' }}>
       <Container className='display_resume_container'>
         <KeyboardBackspaceIcon
           fontSize='large'
-          sx={{ cursor: 'pointer', color: 'lightblue' }}
+          sx={{ cursor: 'pointer', color: color.backArrows }}
           onClick={() => navigate('/')} />
         <Card className='display_resume_card'>
           <Document

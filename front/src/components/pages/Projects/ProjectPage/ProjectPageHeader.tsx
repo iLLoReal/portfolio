@@ -1,10 +1,9 @@
-import CardHeader from '@mui/material/CardHeader'
-import React from 'react'
-import { projectType } from '../ProjectsPage/ProjectsPage'
-import { useNavigate } from 'react-router-dom';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import CardHeader from '@mui/material/CardHeader';
+import { useNavigate } from 'react-router-dom';
+import { color } from '../../../utils/Colors';
+import { projectType } from '../ProjectsPage/ProjectsPage';
 import './ProjectPageHeader.scss';
-import bgColor, { color } from '../../../utils/Colors';
 
 type Props = {
   project: projectType
