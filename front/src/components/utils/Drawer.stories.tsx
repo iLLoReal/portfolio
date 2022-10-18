@@ -15,6 +15,7 @@ const Template: ComponentStory<typeof Drawer> = (args: DrawerProps) => (
     open={args.open}
     close={args.close}
     hide={args.hide}
+    isHiddenHandler={null}
   >
     {args.children}
   </Drawer>);

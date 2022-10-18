@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import bgColor, { colors } from '../../../utils/Colors';
 import { projectsSliceState } from '../projectsSlice';
 import { projectType } from './ProjectsPage';
 
@@ -14,7 +15,7 @@ type Props = {
 const SearchBar = ({ projectStore, isOnMobile }: Props) => {
   const navigate = useNavigate();
   const [searchedProject, setSearchedProject] = useState<string>('');
-  const [borderColor, setBorderColor] = useState<string>('white');
+  const [borderColor, setBorderColor] = useState<string>(colors.pureWhite);
   const label = useMemo<string>(() => {
     if (!isOnMobile && searchedProject.length)
       return 'HIT ENTER'
@@ -37,7 +38,7 @@ const SearchBar = ({ projectStore, isOnMobile }: Props) => {
   }
 
   return (
-    <div style={{ display: 'flex', color: 'white' }}>
+    <div style={{ display: 'flex', color: colors.pureWhite }}>
       <Autocomplete
         disablePortal
         options={projectSearchList}
@@ -48,7 +49,7 @@ const SearchBar = ({ projectStore, isOnMobile }: Props) => {
               newOptions.push(option);
             }
           });
-          setBorderColor(newOptions.length ? 'white' : 'red');
+          setBorderColor(newOptions.length ? colors.pureWhite : colors.red);
           return newOptions;
         }}
         sx={{ width: 300 }}
@@ -58,9 +59,9 @@ const SearchBar = ({ projectStore, isOnMobile }: Props) => {
             variant='outlined'
             label={label}
             sx={{
-              input: { color: 'white' },
+              input: { color: colors.pureWhite },
               label: {
-                color: 'white',
+                color: colors.pureWhite,
                 "&.Mui-focused": {
                   color: borderColor
                 }

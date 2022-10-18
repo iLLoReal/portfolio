@@ -4,7 +4,7 @@ import React, { Dispatch, SetStateAction } from 'react';
 import { MobileOnlyView } from 'react-device-detect';
 import { useNavigate } from 'react-router-dom';
 import { projectType } from '../pages/Projects/ProjectsPage/ProjectsPage';
-import { bgColor } from '../utils/Colors';
+import { bgColor, colors } from '../utils/Colors';
 
 type Props = {
   project: projectType;
@@ -21,11 +21,11 @@ const ProjectCard = ({ project, select }: Props) => {
     <Card
       variant='elevation'
       onClick={(e) => handleProjectClick(e)}
-      sx={{ textAlign: 'center', color: '#F0F7F4', backgroundColor: 'white', border: 'none', boxShadow: 'none' }}
+      sx={{ textAlign: 'center', color: '#F0F7F4', backgroundColor: bgColor.card, border: 'none', boxShadow: 'none' }}
     >
-      <CardHeader title={`Projet ${project.title}`} sx={{ backgroundColor: bgColor.black, color: '#E8E1EF' }} />
+      <CardHeader title={`Projet ${project.title}`} sx={{ backgroundColor: bgColor.cardHeader, color: bgColor.outter }} />
       <CardContent
-        sx={{ textAlign: 'left', backgroundColor: bgColor.gray , border: `0.2rem solid ${bgColor.black}`, margin: '0.1rem' }}>
+        sx={{ color: bgColor.outter, textAlign: 'left', backgroundColor: bgColor.cardContent, border: `0.2rem solid ${colors.black}`, margin: '0.1rem' }}>
         <Grid
           container
           direction={'column'}
@@ -36,7 +36,7 @@ const ProjectCard = ({ project, select }: Props) => {
             </Typography>
             <Grid container justifyContent={'space-around'}>
               {project.stack.map((techno: { title: string; link?: string }, id: number) =>
-                <p style={{ fontSize: '0.7rem' }} key={project.id + '/stack/' + id + '/' + techno}>
+                <p style={{ fontSize: '0.7rem', color: 'inherit' }} key={project.id + '/stack/' + id + '/' + techno}>
                   {techno.title}
                 </p>)}
             </Grid>

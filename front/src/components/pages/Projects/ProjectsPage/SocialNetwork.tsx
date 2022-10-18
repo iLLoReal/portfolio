@@ -15,15 +15,19 @@ const SocialNetwork = ({ icon, redirectUrl = 'none', glow = '#FED766', text = ''
   }
   return (
     <div>
-      <Avatar>
-        <Link underline='none'>
+      <Avatar sx={{
+        backgroundColor: 'inherit',
+      }}>
+        <Link underline='none' sx={{
+          backgroundColor: 'inherit',
+        }}>
           <Button
             onClick={() => onClickHandler(redirectUrl)}
             sx={{
               display: 'flex',
               flexDirection: 'column',
               color: glow,
-              backgroundColor: '#009FB7',
+              backgroundColor: 'inherit',
               fontSize: '0.38rem'
             }}
           >
@@ -32,7 +36,7 @@ const SocialNetwork = ({ icon, redirectUrl = 'none', glow = '#FED766', text = ''
           </Button>
         </Link>
       </Avatar>
-    </div>
+    </div >
   )
 }
 
