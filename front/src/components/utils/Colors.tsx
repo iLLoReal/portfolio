@@ -14,17 +14,21 @@ export const colors = {
 }
 
 export const bgColor = {
-  blueCyan: '#009FB7',
-  pewterBlue: '#93B7BE',
-  manateeGray: '#8F91A2',
-  blue: '#93B7BE',
-  gray: '#8F91A2',
-  black: '#272727',
-  cardContent: colors.pureWhite,
+  cardContent: colors.pewterBlue,
   cardHeader: colors.black,
-  card: colors.pureWhite,
+  card: colors.pewterBlue,
   outter: colors.pewterBlue,
   socialNetwork: colors.black,
+}
+
+export const color = {
+  cardContent: bgColor.outter,
+  cardHeader: bgColor.outter,
+  card: bgColor.outter,
+  outter: colors.pureWhite,
+  socialNetwork: colors.pureWhite,
+  searchBar: colors.pureWhite,
+  searchBarError: colors.red,
 }
 
 export default bgColor;

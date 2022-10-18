@@ -102,7 +102,7 @@ const ProjectsPage = () => {
             }}>
               <div style={{
                 width: '100%',
-                margin: '10px'
+                marginTop: '10px'
               }}>
                 <Tooltip title='Prévisualiser le projet'>
                   <Avatar

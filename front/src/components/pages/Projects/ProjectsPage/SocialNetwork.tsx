@@ -1,5 +1,6 @@
 import { Avatar, Button, Link } from '@mui/material';
 import React from 'react';
+import { color } from '../../../utils/Colors';
 
 
 type Props = {
@@ -26,7 +27,7 @@ const SocialNetwork = ({ icon, redirectUrl = 'none', glow = '#FED766', text = ''
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              color: glow,
+              color: color.socialNetwork,
               backgroundColor: 'inherit',
               fontSize: '0.38rem'
             }}

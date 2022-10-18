@@ -4,7 +4,7 @@ import React, { Dispatch, SetStateAction } from 'react';
 import { MobileOnlyView } from 'react-device-detect';
 import { useNavigate } from 'react-router-dom';
 import { projectType } from '../pages/Projects/ProjectsPage/ProjectsPage';
-import { bgColor, colors } from '../utils/Colors';
+import { bgColor, color, colors } from '../utils/Colors';
 
 type Props = {
   project: projectType;
@@ -21,11 +21,11 @@ const ProjectCard = ({ project, select }: Props) => {
     <Card
       variant='elevation'
       onClick={(e) => handleProjectClick(e)}
-      sx={{ textAlign: 'center', color: '#F0F7F4', backgroundColor: bgColor.card, border: 'none', boxShadow: 'none' }}
+      sx={{ textAlign: 'center', color: color.card, backgroundColor: bgColor.card, border: 'none', boxShadow: 'none' }}
     >
-      <CardHeader title={`Projet ${project.title}`} sx={{ backgroundColor: bgColor.cardHeader, color: bgColor.outter }} />
+      <CardHeader title={`Projet ${project.title}`} sx={{ backgroundColor: bgColor.cardHeader, color: color.cardHeader }} />
       <CardContent
-        sx={{ color: bgColor.outter, textAlign: 'left', backgroundColor: bgColor.cardContent, border: `0.2rem solid ${colors.black}`, margin: '0.1rem' }}>
+        sx={{ color: color.cardContent, textAlign: 'left', backgroundColor: bgColor.cardContent, border: `0.2rem solid ${colors.black}`, margin: '0.1rem' }}>
         <Grid
           container
           direction={'column'}

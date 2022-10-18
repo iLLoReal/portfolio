@@ -1,9 +1,10 @@
 import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
 import TextField from '@mui/material/TextField';
 import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { colors } from '../../../utils/Colors';
+import { color } from '../../../utils/Colors';
 import { projectsSliceState } from '../projectsSlice';
 import { projectType } from './ProjectsPage';
 
@@ -15,7 +16,7 @@ type Props = {
 const SearchBar = ({ projectStore, isOnMobile }: Props) => {
   const navigate = useNavigate();
   const [searchedProject, setSearchedProject] = useState<string>('');
-  const [borderColor, setBorderColor] = useState<string>(colors.pureWhite);
+  const [borderColor, setBorderColor] = useState<string>(color.searchBar);
   const label = useMemo<string>(() => {
     if (!isOnMobile && searchedProject.length)
       return 'HIT ENTER'
@@ -38,7 +39,7 @@ const SearchBar = ({ projectStore, isOnMobile }: Props) => {
   }
 
   return (
-    <div style={{ display: 'flex', color: colors.pureWhite }}>
+    <div style={{ margin: '1rem', display: 'flex', color: color.searchBar }}>
       <Autocomplete
         disablePortal
         options={projectSearchList}
@@ -49,41 +50,44 @@ const SearchBar = ({ projectStore, isOnMobile }: Props) => {
               newOptions.push(option);
             }
           });
-          setBorderColor(newOptions.length ? colors.pureWhite : colors.red);
+          setBorderColor(newOptions.length ? color.searchBar : color.searchBarError);
           return newOptions;
         }}
         sx={{ width: 300 }}
         renderInput={(params) =>
-          <TextField
-            {...params}
-            variant='outlined'
-            label={label}
-            sx={{
-              input: { color: colors.pureWhite },
-              label: {
-                color: colors.pureWhite,
-                "&.Mui-focused": {
-                  color: borderColor
-                }
-              },
-              "& .MuiOutlinedInput-root": {
-                "&:hover fieldset": {
-                  borderWidth: '2px',
-                  borderColor: borderColor,
+          <ClickAwayListener onClickAway={() => setBorderColor(color.searchBar)}>
+            <TextField
+              {...params}
+              variant='outlined'
+              label={label}
+              sx={{
+                input: { color: color.searchBar },
+                label: {
+                  color: color.searchBar,
+                  "&.Mui-focused": {
+                    color: borderColor
+                  }
                 },
-                "&.Mui-focused fieldset": {
-                  borderColor: borderColor,
+                "& .MuiOutlinedInput-root": {
+                  "&:hover fieldset": {
+                    borderWidth: '2px',
+                    borderColor: borderColor,
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: borderColor,
+                  },
+                  fieldset: {
+                    borderColor: borderColor,
+                  },
                 },
-                fieldset: {
-                  borderColor: borderColor,
-                },
-              },
 
-            }}
-            onChange={() => console.log((params.InputProps.endAdornment as React.ReactElement).props)}
-          />}
+              }}
+              onChange={() => setBorderColor(color.searchBar)}
+            />
+          </ClickAwayListener>}
         onChange={(event, value) => handleSearchInputChange(value)}
         onKeyDown={(key: React.KeyboardEvent<HTMLDivElement>) => handleSearchValidation(key)}
+
       />
       {isOnMobile && searchedProject.length ?
         <Button
