@@ -20,6 +20,7 @@ import SocialNetwork from './SocialNetwork';
 import './ProjectsPage.scss';
 import { Button, Card } from '@mui/material';
 import { bgColor } from '../../../utils/Colors';
+import CropPortraitIcon from '@mui/icons-material/CropPortrait';
 
 export type projectType = {
   id: number;
@@ -69,9 +70,21 @@ const ProjectsPage = () => {
         sx={{ backgroundColor: '#009FB7' }}
       >
         <Grid container justifyContent='center' sx={{ margin: '2rem', backgroundColor: bgColor.blueCyan }}>
-          <SocialNetwork icon={(<GitHubIcon />)} redirectUrl='https://github.com/iLLoReal' glow={bgColor.black}/>
-          <SocialNetwork icon={(<LinkedInIcon />)} redirectUrl='https://www.linkedin.com/in/olivier-laffon/' glow={bgColor.black} />
-          <SocialNetwork icon={<p>cv</p>} redirectUrl='/resume' glow={bgColor.black} />
+          <SocialNetwork
+            icon={(<GitHubIcon />)}
+            redirectUrl='https://github.com/iLLoReal'
+            glow={bgColor.black}
+            text='GitHub' />
+          <SocialNetwork
+            icon={(<LinkedInIcon />)}
+            redirectUrl='https://www.linkedin.com/in/olivier-laffon/'
+            glow={bgColor.black}
+            text='LinkedIn' />
+          <SocialNetwork
+            icon={<CropPortraitIcon />}
+            redirectUrl='/resume'
+            glow={bgColor.black}
+            text='CV' />
         </Grid>
         <SearchBar
           projectStore={projectStore}
@@ -101,7 +114,7 @@ const ProjectsPage = () => {
         />
         <Footer className='projects_footer' width='100%'>
           <Card sx={{ backgroundColor: 'inherit', color: 'inherit', border: 'none', boxShadow: 'none' }}>
-            <Button sx={{color: 'inherit'}} onClick={() => window.location.replace('mailto:olivier.laffon.dev@gmail.com')}>
+            <Button sx={{ color: 'inherit' }} onClick={() => window.location.replace('mailto:olivier.laffon.dev@gmail.com')}>
               Contact</Button>
           </Card>
         </Footer>
