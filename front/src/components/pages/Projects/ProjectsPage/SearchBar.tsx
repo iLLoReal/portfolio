@@ -4,7 +4,7 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
 import TextField from '@mui/material/TextField';
 import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { color } from '../../../utils/Colors';
+import bgColor, { color } from '../../../utils/Colors';
 import { projectsSliceState } from '../projectsSlice';
 import { projectType } from './ProjectsPage';
 
@@ -65,6 +65,7 @@ const SearchBar = ({ projectStore, isOnMobile }: Props) => {
                 input: { color: color.searchBar },
                 label: {
                   color: color.searchBar,
+                  backgroundcolor: bgColor.searchBar,
                   "&.Mui-focused": {
                     color: borderColor
                   }

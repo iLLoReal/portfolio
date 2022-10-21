@@ -46,8 +46,8 @@ const initialState: projectsSliceState = {
         { title: 'Strapi', link: 'https://strapi.io/' },
       ],
       previewUrl: portfolioImage,
-      context: 'Réalisation de mon portfolio',
-      videoUrl: "https://www.youtube.com/watch?v=yhNewL6d6U8",//https://www.youtube.com/embed/yhNewL6d6U8
+      context: `Vous êtes actuellement en train de l'utiliser ! N'hésitez pas à utiliser la barre de recherche :)`,
+      videoUrl: "https://www.youtube.com/embed/N9BgDxvLUvI",//https://www.youtube.com/embed/yhNewL6d6U8
       gitUrl: 'https://github.com/iLLoReal/portfolio',
     },
     {

@@ -27,6 +27,7 @@ export const bgColor = {
   card: colors.veryLightGray,
   outter: colors.veryLightGray,
   socialNetwork: colors.black,
+  searchBar: colors.black,
 }
 
 export const color = {
@@ -35,12 +36,13 @@ export const color = {
   card: colors.black,
   outter: colors.pureWhite,
   socialNetwork: colors.middleBlue,
-  searchBar: colors.black,
-  searchBarError: colors.black,
+  searchBar: colors.pureWhite,
+  searchBarError: colors.red,
   footer: bgColor.outter,
   header: bgColor.outter,
-  textField: colors.pureWhite,
+  textField: colors.black,
   backArrows: bgColor.cardHeader,
+  videoContainer: colors.black,
 }
 
 export default bgColor;

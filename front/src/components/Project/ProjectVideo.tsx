@@ -11,13 +11,13 @@ type Props = {
 
 const ProjectVideo = ({ project }: Props) => {
   return (
-    <div style={{backgroundColor: bgColor.outter}} className='project_video_container'>
+    <div style={{backgroundColor: bgColor.outter, color: color.videoContainer }} className='project_video_container'>
       <Responsive style={{
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
       }}>
-        <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: '1rem'}}>
+        <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: '1rem', color: color.videoContainer}}>
           GitHub<SocialNetwork icon={<GitHubIcon style={{ color: color.socialNetwork }} />} redirectUrl={project.gitUrl} />
         </div>
         <iframe style={{margin: 'none'}} className='project_video_media' title={project.title} src={project.videoUrl} />
