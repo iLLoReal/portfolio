@@ -3,6 +3,7 @@ import { getProjects } from '../../../api/projects';
 import { projectType } from './ProjectsPage/ProjectsPage';
 import rfpImage from './rfp_preview.jpg';
 import portfolioImage from './portfolio_preview.jpg';
+import octoberImage from './october_preview.png';
 
 export interface projectsSliceState {
   projects: projectType[];
@@ -48,6 +49,18 @@ const initialState: projectsSliceState = {
       context: 'Réalisation de mon portfolio',
       videoUrl: "https://www.youtube.com/watch?v=yhNewL6d6U8",//https://www.youtube.com/embed/yhNewL6d6U8
       gitUrl: 'https://github.com/iLLoReal/portfolio',
+    },
+    {
+      id: 2,
+      title: 'October',
+      stack: [
+        { title: 'Ember.js', link: 'https://emberjs.com/' },
+        { title: 'Bootstrap', link: 'https://getbootstrap.com/' },
+      ],
+      previewUrl: octoberImage,
+      context: `Partie front d'une application de suivi et de renseignement sur différents projets de financements participatifs`,
+      videoUrl: 'https://www.youtube.com/embed/0fQlMH858Iw',
+      gitUrl: 'https://github.com/iLLoReal'
     }
   ],
   status: 'idle'

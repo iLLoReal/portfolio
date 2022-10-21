@@ -27,7 +27,7 @@ const ProjectPageHeader = ({ project }: Props) => {
       <CardHeader sx={{color: color.header}} title={project.title} />
       <div className='project_page_stack'>
         {project.stack.map((tech: { title: string; link?: string }, id: number) => (
-          <p style={{color: color.header}} onClick={() => handleTechClick(tech)} id={tech + 'header/stack/' + id}>
+          <p style={{color: color.header, cursor: 'pointer'}} onClick={() => handleTechClick(tech)} id={tech + 'header/stack/' + id}>
             {tech.title}
           </p>))}
       </div>
