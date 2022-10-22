@@ -31,12 +31,12 @@ export const bgColor = {
 }
 
 export const color = {
-  cardContent: colors.black,
-  cardHeader: bgColor.outter,//bgColor.outter
+  cardContent: colors.middleBlue,
+  cardHeader: colors.middleBlue,//bgColor.outter
   card: colors.black,
   outter: colors.pureWhite,
   socialNetwork: colors.middleBlue,
-  searchBar: colors.pureWhite,
+  searchBar: colors.middleBlue,
   searchBarError: colors.red,
   footer: bgColor.outter,
   header: bgColor.outter,

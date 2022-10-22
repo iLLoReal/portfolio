@@ -53,7 +53,7 @@ const SearchBar = ({ projectStore, isOnMobile }: Props) => {
           setBorderColor(newOptions.length ? color.searchBar : color.searchBarError);
           return newOptions;
         }}
-        sx={{ width: 300 }}
+        sx={{ width: '70vw' }}
         renderInput={(params) =>
           <ClickAwayListener onClickAway={() => setBorderColor(color.searchBar)}>
             <TextField
@@ -82,7 +82,6 @@ const SearchBar = ({ projectStore, isOnMobile }: Props) => {
                     borderColor: borderColor,
                   },
                 },
-
               }}
               onChange={() => setBorderColor(color.searchBar)}
             />
@@ -95,7 +94,9 @@ const SearchBar = ({ projectStore, isOnMobile }: Props) => {
         <Button
           variant='outlined'
           onClick={() => handleSearchValidation()}
-        >Ok</Button> : null}
+        >
+          Ok
+        </Button> : null}
     </div>
   )
 }

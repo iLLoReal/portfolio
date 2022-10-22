@@ -59,18 +59,14 @@ const DisplayResume = () => {
               width={resolution[1]}
             />
           </Document>
-          {
-            pageNumber - 1 > 0 &&
+          {pageNumber - 1 > 0 &&
             <Button onClick={() => setPageNumber(pageNumber - 1 ? pageNumber - 1 : pageNumber)}>
               {'<'}{pageNumber}/{numPages}
-            </Button>
-          }
-          {
-            numPages && pageNumber + 1 <= numPages &&
+            </Button>}
+          {numPages && pageNumber + 1 <= numPages &&
             <Button variant="text" onClick={() => setPageNumber(pageNumber + 1 <= numPages ? pageNumber + 1 : pageNumber)}>
               {pageNumber}/{numPages}{'>'}
-            </Button>
-          }
+            </Button>}
           <div style={{ display: 'flex', flexDirection: 'row-reverse', alignSelf: 'flex-end', marginRight: '20px' }}>
             <Avatar>
               <a
@@ -82,7 +78,6 @@ const DisplayResume = () => {
             </Avatar>
           </div>
         </Card>
-
       </Container>
     </div>
   )
