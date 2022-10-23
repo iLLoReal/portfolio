@@ -1,17 +1,13 @@
-import { Button, Card, CardContent, CardHeader, CardMedia, Grid, Typography } from '@mui/material';
-import Link from '@mui/material/Link';
-import React, { Dispatch, SetStateAction } from 'react';
-import { MobileOnlyView } from 'react-device-detect';
+import { Card, CardContent, CardHeader, CardMedia, Grid, Typography } from '@mui/material';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { projectType } from '../pages/Projects/ProjectsPage/ProjectsPage';
-import { bgColor, color, colors } from '../utils/Colors';
 
 type Props = {
   project: projectType;
-  select: Dispatch<SetStateAction<projectType>>;
 }
 
-const ProjectCard = ({ project, select }: Props) => {
+const ProjectCard = ({ project }: Props) => {
   let navigate = useNavigate();
 
   const handleProjectClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -21,11 +17,9 @@ const ProjectCard = ({ project, select }: Props) => {
     <Card
       variant='elevation'
       onClick={(e) => handleProjectClick(e)}
-      sx={{ textAlign: 'center', color: color.card, backgroundColor: bgColor.card, border: 'none', boxShadow: 'none' }}
     >
-      <CardHeader title={`Projet ${project.title}`} sx={{ backgroundColor: bgColor.cardHeader, color: color.cardHeader }} />
-      <CardContent
-        sx={{ color: color.cardContent, textAlign: 'left', backgroundColor: bgColor.cardContent, border: `0.2rem solid ${colors.black}`, margin: '0.1rem' }}>
+      <CardHeader title={`Projet ${project.title}`} />
+      <CardContent>
         <Grid
           container
           direction={'column'}
@@ -43,7 +37,6 @@ const ProjectCard = ({ project, select }: Props) => {
           </Grid>
           <Grid item>
             <Grid
-              onMouseEnter={() => select(project)}
               container
               direction={'column'}
               justifyContent='center'
@@ -53,13 +46,6 @@ const ProjectCard = ({ project, select }: Props) => {
           </Grid>
         </Grid>
       </CardContent>
-      <MobileOnlyView>
-        <Link underline='none'>
-          <Button onClick={() => select(project)}>
-            Preview
-          </Button>
-        </Link>
-      </MobileOnlyView>
     </Card>
   )
 }

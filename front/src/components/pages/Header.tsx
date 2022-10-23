@@ -4,7 +4,11 @@ type Props = {}
 
 const Header = (props: Props) => {
   return (
-    <div>Header</div>
+    <div style={{ height: '100vh', backgroundColor: 'red'}}>
+      <div>
+        
+      </div>
+    </div>
   )
 }
 
